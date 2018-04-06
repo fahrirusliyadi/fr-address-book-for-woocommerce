@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     Fr Address Book For Woocommerce
+ * Plugin Name:     Fr Address Book for Woocommerce
  * Plugin URI:      https://wordpress.org/plugins/fr-address-book-for-woocommerce
  * Description:     Allow customers to save multiple addresses that they frequently use when placing an order.
  * Author:          Fahri Rusliyadi
@@ -11,3 +11,43 @@
  *
  * @package         Fr_Address_Book_For_Woocommerce
  */
+
+// If this file is called directly, abort.
+if (!defined('WPINC')) {
+    die;
+}
+
+define('FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_PATH', plugin_dir_path(__FILE__));
+
+/**
+ * Autoloader.
+ * 
+ * @since 1.0.0
+ * @param string $class Class name.
+ */
+function fr_address_book_for_woocommerce_autoloader($class) {
+    $path = FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_PATH . "src/$class.php";
+    
+    if (file_exists($path)) {
+        require $path;
+    }
+}
+spl_autoload_register('fr_address_book_for_woocommerce_autoloader');
+
+/**
+ * Returns the core instance of the plugin.
+ * 
+ * @since 1.0.0
+ * @staticvar Fr_Address_Book_for_WooCommerce $fr_address_book_for_woocommerce
+ * @return Fr_Address_Book_for_WooCommerce
+ */
+function fr_address_book_for_woocommerce() {
+    static $fr_address_book_for_woocommerce = null;
+    
+    if ($fr_address_book_for_woocommerce === null) {
+        $fr_address_book_for_woocommerce = new Fr_Address_Book_for_WooCommerce();
+    }
+    
+    return $fr_address_book_for_woocommerce;
+}
+add_action('plugins_loaded', array(fr_address_book_for_woocommerce(), 'init'));
