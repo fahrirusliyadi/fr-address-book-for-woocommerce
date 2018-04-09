@@ -54,8 +54,9 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action {
         $address = $customer->{"get_$type"}();
         
         // Save custom address fields that may be provided by other plugins.
-        foreach ($data as $key => $value) {
-            if (strpos($key, "{$type}_") !== 0) {
+        foreach ($data as $key => $value) {            
+            // Exclude array and object values.
+            if (is_array($value) || is_object($value) || strpos($key, "{$type}_") !== 0) {
                 continue;
             }
             
