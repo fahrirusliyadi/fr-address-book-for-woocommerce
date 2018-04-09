@@ -14,6 +14,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
      */
     public function init() {
         add_action('woocommerce_before_checkout_billing_form', array($this, 'on_woocommerce_before_checkout_billing_form'));
+        add_action('woocommerce_before_checkout_shipping_form', array($this, 'on_woocommerce_before_checkout_shipping_form'));
     }
     
     /**
@@ -29,6 +30,21 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
         
         $this->enqueue_scripts();
         $this->display_select_address_field('billing');
+        wp_nonce_field('fabfw_save', 'fabfw_save');
+    }
+    
+    /**
+     * <code>woocommerce_before_checkout_shipping_form</code> action handler.
+     * 
+     * @since 1.0.0
+     * @param WC_Checkout $checkout
+     */
+    public function on_woocommerce_before_checkout_shipping_form($checkout) {
+        if (!wc()->customer->get_id()) {
+            return;
+        }
+                
+        $this->display_select_address_field('shipping');
     }
     
     /**
@@ -63,7 +79,11 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
                                     'type'      => 'radio',
                                     'options'   => $field_options,
                                 );
-        $saved_address_id       = wc()->customer->get_meta("fabfw_address_{$type}_id") ? wc()->customer->get_meta("fabfw_address_{$type}_id") : 'new';
+        $field_option_keys      = array_keys($field_options);
+        $saved_address_id       = wc()->customer->get_meta("fabfw_address_{$type}_id") 
+                                ? wc()->customer->get_meta("fabfw_address_{$type}_id")
+                                // Use the first saved address.
+                                : reset($field_option_keys);
         
         if ($meta_addresses) {
             woocommerce_form_field("fabfw_address_{$type}_id", $field_args, $saved_address_id);
@@ -72,7 +92,5 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
         else {
             echo "<input type='hidden' name='fabfw_address_{$type}_id' value='new'>";
         }
-        
-        wp_nonce_field('fabfw_save', 'fabfw_save');
     }
 }

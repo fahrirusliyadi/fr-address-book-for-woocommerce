@@ -29,10 +29,11 @@
         this._initFieldValues();
         
         this.$document.on('change.fabfw', '[name="fabfw_address_billing_id"]', $.proxy(this.onChangeBillingSelect, this));
+        this.$document.on('change.fabfw', '[name="fabfw_address_shipping_id"]', $.proxy(this.onChangeShippingSelect, this));
     };
     
     /**
-     * Change event handler for billing select field.
+     * Change event handler for select billing address field.
      * 
      * @since 1.0.0
      * @param {Event} event
@@ -43,6 +44,17 @@
     };
     
     /**
+     * Change event handler for select shipping address field.
+     * 
+     * @since 1.0.0
+     * @param {Event} event
+     * @returns {undefined}
+     */
+    SelectAddress.prototype.onChangeShippingSelect = function(event) {
+        this._updateFieldValues('shipping', $(event.target));
+    };
+    
+    /**
      * Initialize address field values on load.
      * 
      * @since 1.0.0
@@ -50,6 +62,7 @@
      */
     SelectAddress.prototype._initFieldValues = function() {        
         this._updateFieldValues('billing', $('[name="fabfw_address_billing_id"]:checked'));
+        this._updateFieldValues('shipping', $('[name="fabfw_address_shipping_id"]:checked'));
     };
     
     /**

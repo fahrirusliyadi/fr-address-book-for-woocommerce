@@ -30,6 +30,10 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action {
         }
         
         $this->save_address('billing', $customer, $data);
+        
+        if ($data['ship_to_different_address']) {
+            $this->save_address('shipping', $customer, $data);
+        }
     }
     
     /**
@@ -47,8 +51,9 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action {
             return;
         }
         
-        $address = $customer->get_billing();
+        $address = $customer->{"get_$type"}();
         
+        // Save custom address fields that may be provided by other plugins.
         foreach ($data as $key => $value) {
             if (strpos($key, "{$type}_") !== 0) {
                 continue;
@@ -56,7 +61,6 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action {
             
             $key = preg_replace("/{$type}_/", '', $key);
             
-            // Save custom address fields the may be provided by other plugins.
             if (!isset($address[$key])) {
                 $address[$key]  = $value;
             }
@@ -66,8 +70,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action {
             $customer->add_meta_data("fabfw_address", $address);
         } else {
             $customer->update_meta_data("fabfw_address", $address, $selected_address_id);
+            $customer->update_meta_data("fabfw_address_{$type}_id", $selected_address_id);
         }
-        
-        $customer->update_meta_data("fabfw_address_{$type}_id", $selected_address_id);
     }
 }
