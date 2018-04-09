@@ -5,8 +5,20 @@
  *
  * @since 1.0.0
  * @author Fahri Rusliyadi <fahri.rusliyadi@gmail.com>
+ * 
+ * @property Fr_Address_Book_for_WooCommerce_Asset $Asset
+ * @property Fr_Address_Book_for_WooCommerce_Customer $Customer
+ * @property Fr_Address_Book_for_WooCommerce_Frontend_Checkout $Frontend_Checkout
+ * @property Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action $Frontend_Checkout_Action
  */
 class Fr_Address_Book_for_WooCommerce {
+    /**
+     * Base URL for this plugin.
+     * 
+     * @since 1.0.0
+     * @var string
+     */
+    private $base_url;
     
     /**
      * Array of services.
@@ -17,15 +29,6 @@ class Fr_Address_Book_for_WooCommerce {
     private $services = array();
     
     /**
-     * Initialize services.
-     * 
-     * @since 1.0.0
-     */
-    public function init() {
-        
-    }
-    
-    /**
      * Get a property's value.
      * 
      * @since 1.0.0
@@ -33,6 +36,12 @@ class Fr_Address_Book_for_WooCommerce {
      * @return mixed
      */
     public function __get($name) {
+        $getter = "get_$name";
+        
+        if (method_exists($this, $getter)) {
+            return $this->{$getter}();
+        }
+        
         if (isset($this->services[$name])) {
             return $this->services[$name];
         }
@@ -42,5 +51,29 @@ class Fr_Address_Book_for_WooCommerce {
         if (class_exists($class_name)) {            
             return $this->services[$name] = new $class_name;
         }
+    }
+    
+    /**
+     * Initialize services.
+     * 
+     * @since 1.0.0
+     */
+    public function init() {
+        $this->Frontend_Checkout->init();
+        $this->Frontend_Checkout_Action->init();
+    }
+    
+    /**
+     * Get plugin base URL.
+     * 
+     * @since 1.0.0
+     * @return string
+     */
+    public function get_base_url() {
+        if (!$this->base_url) {
+            $this->base_url = plugin_dir_url(FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_PATH . 'fr-address-book-for-woocommerce.php');
+        }
+        
+        return $this->base_url;
     }
 }

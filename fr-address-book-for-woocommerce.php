@@ -17,6 +17,7 @@ if (!defined('WPINC')) {
     die;
 }
 
+define('FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_VERSION', '1.0.0');
 define('FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_PATH', plugin_dir_path(__FILE__));
 
 /**
