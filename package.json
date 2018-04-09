@@ -1,5 +1,14 @@
 {
   "name": "fr-address-book-for-woocommerce",
   "version": "1.0.0",
-  "author": "Fahri Rusliyadi"
+  "author": "Fahri Rusliyadi",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0"
+  },
+  "scripts": {
+    "gulp": "gulp"
+  }
 }

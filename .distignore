@@ -13,6 +13,7 @@ circle.yml
 composer.json
 composer.lock
 Gruntfile.js
+gulpfile.js
 package.json
 package-lock.json
 phpunit.xml
