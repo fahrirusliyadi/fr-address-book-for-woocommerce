@@ -52,3 +52,8 @@ function fr_address_book_for_woocommerce() {
     return $fr_address_book_for_woocommerce;
 }
 add_action('plugins_loaded', array(fr_address_book_for_woocommerce(), 'init'));
+
+/**
+ * Register plugin activation handler.
+ */
+register_activation_hook(__FILE__, array('Fr_Address_Book_for_WooCommerce_Activator', 'on_activate_'));

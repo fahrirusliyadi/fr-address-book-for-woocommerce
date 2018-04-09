@@ -60,7 +60,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action {
                 continue;
             }
             
-            $key = preg_replace("/{$type}_/", '', $key);
+            $key = preg_replace("/^{$type}_/", '', $key);
             
             if (!isset($address[$key])) {
                 $address[$key]  = $value;

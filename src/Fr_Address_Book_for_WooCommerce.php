@@ -10,6 +10,7 @@
  * @property Fr_Address_Book_for_WooCommerce_Customer $Customer
  * @property Fr_Address_Book_for_WooCommerce_Frontend_Checkout $Frontend_Checkout
  * @property Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action $Frontend_Checkout_Action
+ * @property Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_EditAddressBook $Frontend_MyAccount_EditAddressBook
  * @property Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_MyAddress $Frontend_MyAccount_MyAddress
  * @property Fr_Address_Book_for_WooCommerce_Frontend_Template $Frontend_Template
  */
@@ -63,6 +64,7 @@ class Fr_Address_Book_for_WooCommerce {
     public function init() {
         $this->Frontend_Checkout->init();
         $this->Frontend_Checkout_Action->init();
+        $this->Frontend_MyAccount_EditAddressBook->init();
         $this->Frontend_MyAccount_MyAddress->init();
     }
     
