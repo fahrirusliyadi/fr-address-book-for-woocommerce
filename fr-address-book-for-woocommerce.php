@@ -19,13 +19,24 @@ if (!defined('WPINC')) {
 
 /**
  * Current plugin version.
+ * 
+ * @since 1.0.0
  */
 define('FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_VERSION', '1.0.0');
 
 /**
  * Plugin base path.
+ * 
+ * @since 1.0.0
  */
 define('FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_PATH', plugin_dir_path(__FILE__));
+
+/**
+ * The filename of the plugin.
+ * 
+ * @since 1.0.0
+ */
+define('FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_FILE', __FILE__);
 
 /**
  * Autoloader.

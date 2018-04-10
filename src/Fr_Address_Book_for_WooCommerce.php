@@ -8,6 +8,7 @@
  * 
  * @property string $base_path Base URL for this plugin.
  * @property string $base_url Base URL for this plugin.
+ * @property string $file The filename of the plugin.
  * @property string $version Plugin version.
  * @property int $max_addresses Maximum number of addresses.
  * @property Fr_Address_Book_for_WooCommerce_Asset $Asset
@@ -20,6 +21,7 @@
  * @property Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookEdit_Action $Frontend_MyAccount_AddressBookEdit_Action
  * @property Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_MyAddress $Frontend_MyAccount_MyAddress
  * @property Fr_Address_Book_for_WooCommerce_Frontend_Template $Frontend_Template
+ * @property Fr_Address_Book_for_WooCommerce_I18n $I18n
  */
 class Fr_Address_Book_for_WooCommerce {
     /**
@@ -76,6 +78,7 @@ class Fr_Address_Book_for_WooCommerce {
         $this->Frontend_MyAccount_AddressBookEdit->init();
         $this->Frontend_MyAccount_AddressBookEdit_Action->init();
         $this->Frontend_MyAccount_MyAddress->init();
+        $this->I18n->init();
     }
     
     /**
@@ -96,10 +99,20 @@ class Fr_Address_Book_for_WooCommerce {
      */
     public function get_base_url() {
         if (!$this->base_url) {
-            $this->base_url = plugin_dir_url($this->base_path . 'fr-address-book-for-woocommerce.php');
+            $this->base_url = plugin_dir_url($this->file);
         }
         
         return $this->base_url;
+    }
+    
+    /**
+     * Get the filename of the plugin.
+     * 
+     * @since 1.0.0
+     * @return string
+     */
+    public function get_file() {
+        return FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_FILE;
     }
     
     /**
