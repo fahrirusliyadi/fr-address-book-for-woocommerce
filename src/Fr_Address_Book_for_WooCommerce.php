@@ -11,6 +11,7 @@
  * @property Fr_Address_Book_for_WooCommerce_Frontend_Checkout $Frontend_Checkout
  * @property Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action $Frontend_Checkout_Action
  * @property Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookAdd $Frontend_MyAccount_AddressBookAdd
+ * @property Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookAdd_Action $Frontend_MyAccount_AddressBookAdd_Action
  * @property Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookEdit $Frontend_MyAccount_AddressBookEdit
  * @property Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookEdit_Action $Frontend_MyAccount_AddressBookEdit_Action
  * @property Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_MyAddress $Frontend_MyAccount_MyAddress
@@ -67,6 +68,7 @@ class Fr_Address_Book_for_WooCommerce {
         $this->Frontend_Checkout->init();
         $this->Frontend_Checkout_Action->init();
         $this->Frontend_MyAccount_AddressBookAdd->init();
+        $this->Frontend_MyAccount_AddressBookAdd_Action->init();
         $this->Frontend_MyAccount_AddressBookEdit->init();
         $this->Frontend_MyAccount_AddressBookEdit_Action->init();
         $this->Frontend_MyAccount_MyAddress->init();

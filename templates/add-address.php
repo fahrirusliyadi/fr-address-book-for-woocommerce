@@ -27,10 +27,10 @@ if (!defined('ABSPATH')) {
             <?php
             foreach ($address_fields as $key => $field) {
                 if (isset($field['country_field'], $address_fields[$field['country_field']])) {
-                    $field['country'] = wc_get_post_data_by_key($field['country_field'], $address_fields[$field['country_field']]['value']);
+                    $field['country'] = wc_get_post_data_by_key($field['country_field']);
                 }
                 
-                woocommerce_form_field($key, $field, wc_get_post_data_by_key($key, $field['value']));
+                woocommerce_form_field($key, $field, wc_get_post_data_by_key($key));
             }
             ?>
         </div>
