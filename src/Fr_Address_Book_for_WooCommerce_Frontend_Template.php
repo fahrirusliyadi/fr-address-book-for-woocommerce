@@ -18,7 +18,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Template {
         $__template_path = locate_template("fr-address-book-for-woocommerce/$__template", false, false);
         
         if (!$__template_path) {
-            $__template_path = FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_PATH . "templates/$__template";
+            $__template_path = fr_address_book_for_woocommerce()->base_path . "templates/$__template";
         }
         
         extract($__args);

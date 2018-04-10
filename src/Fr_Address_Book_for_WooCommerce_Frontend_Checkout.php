@@ -53,8 +53,8 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
      * @since 0.1.10
      */
     private function enqueue_scripts() {
-        fr_address_book_for_woocommerce()->Asset->enqueue_style('fabfw_front_end', 'assets/css/frontend.min.css', array(), FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_VERSION);
-        fr_address_book_for_woocommerce()->Asset->enqueue_script('fabfw_select_address', 'assets/js/select-address.min.js', array('jquery'), FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_VERSION, true);
+        fr_address_book_for_woocommerce()->Asset->enqueue_style('fabfw_front_end', 'assets/css/frontend.min.css', array(), fr_address_book_for_woocommerce()->version);
+        fr_address_book_for_woocommerce()->Asset->enqueue_script('fabfw_select_address', 'assets/js/select-address.min.js', array('jquery'), fr_address_book_for_woocommerce()->version, true);
         wp_localize_script('fabfw_select_address', 'fabfw_select_address', array(
             'addresses' => fr_address_book_for_woocommerce()->Customer->get_addresses(),
         ));

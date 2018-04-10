@@ -6,6 +6,9 @@
  * @since 1.0.0
  * @author Fahri Rusliyadi <fahri.rusliyadi@gmail.com>
  * 
+ * @property string $base_path Base URL for this plugin.
+ * @property string $base_url Base URL for this plugin.
+ * @property string $version Plugin version.
  * @property Fr_Address_Book_for_WooCommerce_Asset $Asset
  * @property Fr_Address_Book_for_WooCommerce_Customer $Customer
  * @property Fr_Address_Book_for_WooCommerce_Frontend_Checkout $Frontend_Checkout
@@ -75,6 +78,16 @@ class Fr_Address_Book_for_WooCommerce {
     }
     
     /**
+     * Get plugin base path.
+     * 
+     * @since 1.0.0
+     * @return string
+     */
+    public function get_base_path() {
+        return FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_PATH;
+    }
+    
+    /**
      * Get plugin base URL.
      * 
      * @since 1.0.0
@@ -82,9 +95,19 @@ class Fr_Address_Book_for_WooCommerce {
      */
     public function get_base_url() {
         if (!$this->base_url) {
-            $this->base_url = plugin_dir_url(FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_PATH . 'fr-address-book-for-woocommerce.php');
+            $this->base_url = plugin_dir_url($this->base_path . 'fr-address-book-for-woocommerce.php');
         }
         
         return $this->base_url;
+    }
+    
+    /**
+     * Get plugin version.
+     * 
+     * @since 1.0.0
+     * @return string
+     */
+    public function get_version() {
+        return FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_VERSION;
     }
 }
