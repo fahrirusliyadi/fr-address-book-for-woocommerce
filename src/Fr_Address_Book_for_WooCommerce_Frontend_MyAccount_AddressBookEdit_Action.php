@@ -6,7 +6,7 @@
  * @since 1.0.0
  * @author Fahri Rusliyadi <fahri.rusliyadi@gmail.com>
  */
-class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_EditAddressBook_Action {
+class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookEdit_Action {
     /**
      * Register actions and filters with WordPress.
      * 
@@ -69,7 +69,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_EditAddressBook_Action 
             $customer->save_meta_data();
             
             wc_add_notice(__('Address changed successfully.', 'fr-address-book-for-woocommerce'));
-            wp_safe_redirect(wc_get_endpoint_url(fr_address_book_for_woocommerce()->Frontend_MyAccount_EditAddressBook->get_endpoint_name(), $post_data['address_id'], wc_get_page_permalink('myaccount')));
+            wp_safe_redirect(wc_get_endpoint_url(fr_address_book_for_woocommerce()->Frontend_MyAccount_AddressBookEdit->get_endpoint_name(), $post_data['address_id'], wc_get_page_permalink('myaccount')));
             exit;
         } 
     }

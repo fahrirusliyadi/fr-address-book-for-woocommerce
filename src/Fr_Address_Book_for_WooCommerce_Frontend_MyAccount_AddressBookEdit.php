@@ -6,14 +6,14 @@
  * @since 1.0.0
  * @author Fahri Rusliyadi <fahri.rusliyadi@gmail.com>
  */
-class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_EditAddressBook {
+class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookEdit {
     /**
      * Endpoint name.
      * 
      * @since 1.0.0
      * @var string
      */
-    private $endpoint_name = 'edit-address-book';
+    private $endpoint_name = 'address-book-edit';
 
     /**
      * Register actions and filters with WordPress.

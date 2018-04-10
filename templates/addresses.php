@@ -29,7 +29,7 @@ $col = 1;
             <div class="u-column<?php echo $col < 0 ? 1 : 2; ?> col-<?php echo $col < 0 ? 1 : 2; ?> woocommerce-Address">
                 <header class="woocommerce-Address-title title">
                     <h3><?php echo $address['first_name'] ?> <?php echo $address['last_name'] ?></h3>
-                    <a href="<?php echo esc_url(wc_get_endpoint_url('edit-address-book', $id)); ?>" class="edit"><?php _e('Edit', 'fr-address-book-for-woocommerce') ?></a>
+                    <a href="<?php echo esc_url(wc_get_endpoint_url(fr_address_book_for_woocommerce()->Frontend_MyAccount_AddressBookEdit->get_endpoint_name(), $id)); ?>" class="edit"><?php _e('Edit', 'fr-address-book-for-woocommerce') ?></a>
                 </header>
                 
                 <address>
