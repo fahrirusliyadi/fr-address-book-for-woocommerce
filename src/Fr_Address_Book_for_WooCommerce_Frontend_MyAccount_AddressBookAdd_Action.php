@@ -14,11 +14,17 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookAdd_Action e
      * @return void
      */
     public function on_template_redirect() {
-        if (!wc()->customer->get_id() || !wp_verify_nonce(wc_get_post_data_by_key('fabfw_add_address'), 'fabfw_add_address')) {
+        if (!wc()->customer->get_id()) {
             return;
         }
         
-        $this->add_address();
+        if (wp_verify_nonce(wc_get_post_data_by_key('fabfw_add_address'), 'fabfw_add_address')) {
+            $this->add_address();
+        }
+        
+        if (wp_verify_nonce(filter_input(INPUT_GET, 'fabfw_delete_address'), 'fabfw_delete_address') && $address_id = filter_input(INPUT_GET, 'address_id', FILTER_SANITIZE_NUMBER_INT)) {
+            $this->delete_address($address_id);
+        }
     }
     
     /**
@@ -37,5 +43,22 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookAdd_Action e
             wp_safe_redirect(wc_get_endpoint_url('edit-address', null, wc_get_page_permalink('myaccount')));
             exit;
         } 
+    }
+    
+    /**
+     * Delete an address.
+     * 
+     * @since 1.0.0
+     * @param int $address_id
+     */
+    private function delete_address($address_id) {
+        $customer = new WC_Customer(wc()->customer->get_id());
+        
+        $customer->delete_meta_data_by_mid($address_id);
+        $customer->save_meta_data();
+        
+        wc_add_notice(__('Address deleted successfully.', 'fr-address-book-for-woocommerce'));
+        wp_safe_redirect(wc_get_endpoint_url('edit-address', null, wc_get_page_permalink('myaccount')));
+        exit;
     }
 }
