@@ -46,7 +46,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookAdd extends 
 
 	$is_endpoint = isset($wp_query->query_vars[$this->endpoint_name]);
 
-	if ($is_endpoint && !is_admin() && is_main_query() && in_the_loop() && is_account_page()) {
+	if (function_exists('wc') && $is_endpoint && !is_admin() && is_main_query() && in_the_loop() && is_account_page()) {
             // New page title.
             $title = __('Add Address', 'fr-address-book-for-woocommerce');
 

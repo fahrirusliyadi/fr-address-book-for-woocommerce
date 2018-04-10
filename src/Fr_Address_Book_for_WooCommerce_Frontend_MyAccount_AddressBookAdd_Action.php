@@ -14,7 +14,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookAdd_Action e
      * @return void
      */
     public function on_template_redirect() {
-        if (!wc()->customer->get_id()) {
+        if (!function_exists('wc') || !wc()->customer->get_id()) {
             return;
         }
         

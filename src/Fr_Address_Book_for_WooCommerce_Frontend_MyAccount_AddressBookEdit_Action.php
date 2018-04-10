@@ -14,7 +14,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookEdit_Action 
      * @return void
      */
     public function on_template_redirect() {
-        if (!wc()->customer->get_id() || !wp_verify_nonce(wc_get_post_data_by_key('fabfw_edit_address'), 'fabfw_edit_address')) {
+        if (!function_exists('wc') || !wc()->customer->get_id() || !wp_verify_nonce(wc_get_post_data_by_key('fabfw_edit_address'), 'fabfw_edit_address')) {
             return;
         }
         
