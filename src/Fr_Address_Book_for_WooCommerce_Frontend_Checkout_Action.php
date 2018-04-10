@@ -45,6 +45,10 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action {
      * @param array $data Posted data.
      */
     private function save_address($type, $customer, $data) {
+        if (count(fr_address_book_for_woocommerce()->Customer->get_addresses()) >= fr_address_book_for_woocommerce()->max_addresses) {
+            return;
+        }
+        
         $selected_address_id = filter_input(INPUT_POST, "fabfw_address_{$type}_id");
         
         if (!$selected_address_id) {

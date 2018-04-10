@@ -9,6 +9,7 @@
  * @property string $base_path Base URL for this plugin.
  * @property string $base_url Base URL for this plugin.
  * @property string $version Plugin version.
+ * @property int $max_addresses Maximum number of addresses.
  * @property Fr_Address_Book_for_WooCommerce_Asset $Asset
  * @property Fr_Address_Book_for_WooCommerce_Customer $Customer
  * @property Fr_Address_Book_for_WooCommerce_Frontend_Checkout $Frontend_Checkout
@@ -109,5 +110,15 @@ class Fr_Address_Book_for_WooCommerce {
      */
     public function get_version() {
         return FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_VERSION;
+    }
+    
+    /**
+     * Get the maximum number of addresses.
+     * 
+     * @since 1.0.0
+     * @return int
+     */
+    public function get_max_addresses() {
+        return 10;
     }
 }

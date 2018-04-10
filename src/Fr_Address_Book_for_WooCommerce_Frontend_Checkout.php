@@ -65,13 +65,16 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
      */
     private function display_select_address_field($type) {    
         $field_options  = array();
-        $meta_addresses = wc()->customer->get_meta("fabfw_address", false);
+        $addresses      = fr_address_book_for_woocommerce()->Customer->get_addresses();
         
-        foreach ($meta_addresses as $meta_data) {
-            $field_options[$meta_data->id] = wc()->countries->get_formatted_address($meta_data->value);
+        foreach ($addresses as $id => $value) {
+            $field_options[$id] = wc()->countries->get_formatted_address($value);
         }
         
-        $field_options['new']   = sprintf('<a class="button">%s</a>', __('New Address', 'fr-address-book-for-woocommerce'));
+        if (count($addresses) < fr_address_book_for_woocommerce()->max_addresses) {
+            $field_options['new'] = sprintf('<a class="button">%s</a>', __('New Address', 'fr-address-book-for-woocommerce'));
+        }
+        
         $field_args             = array(
                                     'label'     => __('Address book', 'fr-address-book-for-woocommerce'),
                                     'type'      => 'radio',
@@ -86,7 +89,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
         
         echo '<div class="fabfw-select-address-container">';
                                 
-        if ($meta_addresses) {
+        if ($addresses) {
             woocommerce_form_field("fabfw_address_{$type}_id", $field_args, $saved_address_id);
         } 
         // Hide the field if no addresses saved yet.

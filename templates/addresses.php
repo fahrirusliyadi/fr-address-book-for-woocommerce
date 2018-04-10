@@ -55,5 +55,7 @@ $col = 1;
         </div>
     <?php endif ?>
     
-    <a href="<?php echo esc_url(wc_get_endpoint_url(fr_address_book_for_woocommerce()->Frontend_MyAccount_AddressBookAdd->get_endpoint_name())); ?>" class="button"><?php _e('Add new address', 'fr-address-book-for-woocommerce') ?></a>
+    <?php if (count($addresses) < fr_address_book_for_woocommerce()->max_addresses) : ?>
+        <a href="<?php echo esc_url(wc_get_endpoint_url(fr_address_book_for_woocommerce()->Frontend_MyAccount_AddressBookAdd->get_endpoint_name())); ?>" class="button"><?php _e('Add new address', 'fr-address-book-for-woocommerce') ?></a>
+    <?php endif ?>
 </div>

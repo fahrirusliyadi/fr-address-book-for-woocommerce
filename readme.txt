@@ -14,7 +14,8 @@ Allow customers to save multiple addresses that they frequently use when placing
 
 The address book contains the customer's default billing and shipping addresses,
 and any additional addresses that they frequently use when placing an order.
-This will speed up the checkout process.
+This will speed up the checkout process. Each customer can have up to 10 
+additional addresses.
 
 == Installation ==
 
