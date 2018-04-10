@@ -27,7 +27,7 @@ class Fr_Address_Book_for_WooCommerce_Activator {
         // Endpoints need to be added before flushing rewrite rules. The 
         // endpoints have not been added because our hook handlers have not been 
         // attached and `plugins_loaded` action has already been fired.
-        fr_address_book_for_woocommerce()->Frontend_MyAccount_EditAddressBook->add_rewrite_endpoints();
+        fr_address_book_for_woocommerce()->Frontend_MyAccount_EditAddressBook->add_rewrite_endpoint();
         flush_rewrite_rules();
     }
 }

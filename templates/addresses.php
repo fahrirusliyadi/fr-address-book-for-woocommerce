@@ -22,7 +22,7 @@ $col = 1;
 ?>
 
 <div class="fabfw-address-book">
-    <h2 class="title"><?php _e('Additional Addresses', 'fr-address-book-for-woocommerce') ?></h2>
+    <h2 class="fabfw-title"><?php _e('Additional Addresses', 'fr-address-book-for-woocommerce') ?></h2>
     
     <div class="u-columns woocommerce-Addresses col2-set addresses">
         <?php foreach ($addresses as $id => $address) : $col = $col * -1 ?>

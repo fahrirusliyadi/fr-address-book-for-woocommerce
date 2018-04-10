@@ -33,7 +33,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_EditAddressBook {
      * @since 1.0.0
      */
     public function on_init() {
-        $this->add_rewrite_endpoints();
+        $this->add_rewrite_endpoint();
     }
     
     /**
@@ -80,8 +80,18 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_EditAddressBook {
      * 
      * @since 1.0.0
      */
-    public function add_rewrite_endpoints() {
+    public function add_rewrite_endpoint() {
         add_rewrite_endpoint($this->endpoint_name, EP_ROOT | EP_PAGES);
+    }
+    
+    /**
+     * Get the endpoint name.
+     * 
+     * @since 1.0.0
+     * @return string
+     */
+    public function get_endpoint_name() {
+        return $this->endpoint_name;
     }
     
     /**

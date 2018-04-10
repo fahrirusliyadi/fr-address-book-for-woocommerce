@@ -36,9 +36,8 @@ if (!defined('ABSPATH')) {
         </div>
 
         <p>
-            <button type="submit" class="button" name="save_address" value="<?php esc_attr_e('Save address', 'fr-address-book-for-woocommerce') ?>">
-                <?php esc_html_e('Save address', 'fr-address-book-for-woocommerce') ?>
-            </button>
+            <button type="submit" class="button"><?php esc_html_e('Save address', 'fr-address-book-for-woocommerce') ?></button>
+            <input type="hidden" name="address_id" value="<?php echo (int) $address_id ?>">
             <?php wp_nonce_field('fabfw_edit_address', 'fabfw_edit_address') ?>
         </p>
     </div>
