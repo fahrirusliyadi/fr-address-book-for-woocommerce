@@ -43,7 +43,12 @@ $col = 1;
                     </header>
 
                     <address>
-                        <?php echo wc()->countries->get_formatted_address($address) ?>
+                        <?php 
+                        // Remove first name and last name. It has already displayed as the title.
+                        unset($address['first_name']); 
+                        unset($address['last_name']);
+                        echo wc()->countries->get_formatted_address($address);
+                        ?>
                     </address>
                 </div>
             <?php endforeach ?>
