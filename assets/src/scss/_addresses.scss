@@ -1,0 +1,11 @@
+.fabfw-addresses-container {
+    .fabfw-delete-link {
+        margin-left: 1em;
+        color: $red;
+
+        &:hover,
+        &:focus {
+            color: darken($red, 10%);
+        }
+    }
+}

@@ -19,26 +19,26 @@ if (!defined('ABSPATH')) {
 
 ?>
 
-<form method="post">
-    <h3><?php echo $saved_address['first_name'] ?> <?php echo $saved_address['last_name'] ?></h3>
+<div class="fabfw-edit-address-container">
+    <form method="post">
+        <div class="woocommerce-address-fields">
+            <div class="woocommerce-address-fields__field-wrapper">
+                <?php
+                foreach ($address_fields as $key => $field) {
+                    if (isset($field['country_field'], $address_fields[$field['country_field']])) {
+                        $field['country'] = wc_get_post_data_by_key($field['country_field'], $address_fields[$field['country_field']]['value']);
+                    }
 
-    <div class="woocommerce-address-fields">
-        <div class="woocommerce-address-fields__field-wrapper">
-            <?php
-            foreach ($address_fields as $key => $field) {
-                if (isset($field['country_field'], $address_fields[$field['country_field']])) {
-                    $field['country'] = wc_get_post_data_by_key($field['country_field'], $address_fields[$field['country_field']]['value']);
+                    woocommerce_form_field($key, $field, wc_get_post_data_by_key($key, $field['value']));
                 }
-                
-                woocommerce_form_field($key, $field, wc_get_post_data_by_key($key, $field['value']));
-            }
-            ?>
-        </div>
+                ?>
+            </div>
 
-        <p>
-            <button type="submit" class="button"><?php esc_html_e('Save address', 'fr-address-book-for-woocommerce') ?></button>
-            <input type="hidden" name="address_id" value="<?php echo (int) $address_id ?>">
-            <?php wp_nonce_field('fabfw_edit_address', 'fabfw_edit_address') ?>
-        </p>
-    </div>
-</form>
+            <p>
+                <button type="submit" class="button"><?php esc_html_e('Save address', 'fr-address-book-for-woocommerce') ?></button>
+                <input type="hidden" name="address_id" value="<?php echo (int) $address_id ?>">
+                <?php wp_nonce_field('fabfw_edit_address', 'fabfw_edit_address') ?>
+            </p>
+        </div>
+    </form>
+</div>

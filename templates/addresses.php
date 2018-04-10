@@ -21,7 +21,7 @@ $col = 1;
 
 ?>
 
-<div class="fabfw-address-book">
+<div class="fabfw-addresses-container">
     <h2 class="fabfw-title"><?php _e('Additional Addresses', 'fr-address-book-for-woocommerce') ?></h2>
     
     <div class="u-columns woocommerce-Addresses col2-set addresses">
@@ -36,8 +36,9 @@ $col = 1;
             <div class="u-column<?php echo $col < 0 ? 1 : 2; ?> col-<?php echo $col < 0 ? 1 : 2; ?> woocommerce-Address">
                 <header class="woocommerce-Address-title title">
                     <h3><?php echo $address['first_name'] ?> <?php echo $address['last_name'] ?></h3>
+                    
+                    <a href="<?php echo esc_url($delete_url) ?>" class="edit fabfw-delete-link" onclick="return confirm('<?php esc_attr_e('Are you sure you want to delete this address?', 'fr-address-book-for-woocommerce') ?>');"><?php _e('Delete', 'fr-address-book-for-woocommerce') ?></a>
                     <a href="<?php echo esc_url($edit_url) ?>" class="edit"><?php _e('Edit', 'fr-address-book-for-woocommerce') ?></a>
-                    <a href="<?php echo esc_url($delete_url) ?>" class="edit fabfw-delete" onclick="return confirm('<?php esc_attr_e('Are you sure you want to delete this address?', 'fr-address-book-for-woocommerce') ?>');"><?php _e('Delete', 'fr-address-book-for-woocommerce') ?></a>
                 </header>
                 
                 <address>

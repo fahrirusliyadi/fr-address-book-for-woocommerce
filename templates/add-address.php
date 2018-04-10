@@ -19,25 +19,25 @@ if (!defined('ABSPATH')) {
 
 ?>
 
-<form method="post">
-    <h3><?php _e('Add new address', 'fr-address-book-for-woocommerce') ?></h3>
+<div class="fabfw-add-address-container">
+    <form method="post">
+        <div class="woocommerce-address-fields">
+            <div class="woocommerce-address-fields__field-wrapper">
+                <?php
+                foreach ($address_fields as $key => $field) {
+                    if (isset($field['country_field'], $address_fields[$field['country_field']])) {
+                        $field['country'] = wc_get_post_data_by_key($field['country_field']);
+                    }
 
-    <div class="woocommerce-address-fields">
-        <div class="woocommerce-address-fields__field-wrapper">
-            <?php
-            foreach ($address_fields as $key => $field) {
-                if (isset($field['country_field'], $address_fields[$field['country_field']])) {
-                    $field['country'] = wc_get_post_data_by_key($field['country_field']);
+                    woocommerce_form_field($key, $field, wc_get_post_data_by_key($key));
                 }
-                
-                woocommerce_form_field($key, $field, wc_get_post_data_by_key($key));
-            }
-            ?>
-        </div>
+                ?>
+            </div>
 
-        <p>
-            <button type="submit" class="button"><?php esc_html_e('Add address', 'fr-address-book-for-woocommerce') ?></button>
-            <?php wp_nonce_field('fabfw_add_address', 'fabfw_add_address') ?>
-        </p>
-    </div>
-</form>
+            <p>
+                <button type="submit" class="button"><?php esc_html_e('Add address', 'fr-address-book-for-woocommerce') ?></button>
+                <?php wp_nonce_field('fabfw_add_address', 'fabfw_add_address') ?>
+            </p>
+        </div>
+    </form>
+</div>

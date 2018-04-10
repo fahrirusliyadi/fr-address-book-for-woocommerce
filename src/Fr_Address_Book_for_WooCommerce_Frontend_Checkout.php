@@ -53,6 +53,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
      * @since 0.1.10
      */
     private function enqueue_scripts() {
+        fr_address_book_for_woocommerce()->Asset->enqueue_style('fabfw_front_end', 'assets/css/frontend.min.css', array(), FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_VERSION);
         fr_address_book_for_woocommerce()->Asset->enqueue_script('fabfw_select_address', 'assets/js/select-address.min.js', array('jquery'), FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_VERSION, true);
         wp_localize_script('fabfw_select_address', 'fabfw_select_address', array(
             'addresses' => fr_address_book_for_woocommerce()->Customer->get_addresses(),
@@ -85,6 +86,8 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
                                 // Use the first saved address.
                                 : reset($field_option_keys);
         
+        echo '<div class="fabfw-select-address-container">';
+                                
         if ($meta_addresses) {
             woocommerce_form_field("fabfw_address_{$type}_id", $field_args, $saved_address_id);
         } 
@@ -92,5 +95,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
         else {
             echo "<input type='hidden' name='fabfw_address_{$type}_id' value='new'>";
         }
+        
+        echo '</div>';
     }
 }

@@ -6,7 +6,32 @@
  * @since 1.0.0
  * @author Fahri Rusliyadi <fahri.rusliyadi@gmail.com>
  */
-class Fr_Address_Book_for_WooCommerce_Asset {
+class Fr_Address_Book_for_WooCommerce_Asset {    
+    /**
+     * Enqueue a CSS stylesheet.
+     *
+     * @since 1.0.0
+     * @param string           $handle Name of the stylesheet. Should be unique.
+     * @param string           $src    Path of the stylesheet relative to the plugin root directory.
+     *                                 Default empty.
+     * @param array            $deps   Optional. An array of registered stylesheet handles this stylesheet depends on. Default empty array.
+     * @param string|bool|null $ver    Optional. String specifying stylesheet version number, if it has one, which is added to the URL
+     *                                 as a query string for cache busting purposes. If version is set to false, a version
+     *                                 number is automatically added equal to current installed WordPress version.
+     *                                 If set to null, no version is added.
+     * @param string           $media  Optional. The media for which this stylesheet has been defined.
+     *                                 Default 'all'. Accepts media types like 'all', 'print' and 'screen', or media queries like
+     *                                 '(orientation: portrait)' and '(max-width: 640px)'.
+     */
+    public function enqueue_style($handle, $src = '', $deps = array(), $ver = false, $media = 'all') {
+        if (defined('WP_DEBUG') && WP_DEBUG === true) {
+            $ver = filemtime(FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_PATH . $src);
+            $src = str_replace('.min.js', '.js', $src);
+        }
+        
+        wp_enqueue_style($handle, fr_address_book_for_woocommerce()->get_base_url() . $src, $deps, $ver, $media);
+    }
+    
     /**
      * Enqueue a script.
      * 
