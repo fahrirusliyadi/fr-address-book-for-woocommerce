@@ -55,9 +55,6 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
     private function enqueue_scripts() {
         fr_address_book_for_woocommerce()->Asset->enqueue_style('fabfw_front_end', 'assets/css/frontend.min.css', array(), fr_address_book_for_woocommerce()->version);
         fr_address_book_for_woocommerce()->Asset->enqueue_script('fabfw_select_address', 'assets/js/select-address.min.js', array('jquery'), fr_address_book_for_woocommerce()->version, true);
-        wp_localize_script('fabfw_select_address', 'fabfw_select_address', array(
-            'addresses' => fr_address_book_for_woocommerce()->Customer->get_addresses(),
-        ));
     }
 
     /**

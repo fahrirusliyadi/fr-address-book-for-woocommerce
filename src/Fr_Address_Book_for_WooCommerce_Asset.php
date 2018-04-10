@@ -30,6 +30,12 @@ class Fr_Address_Book_for_WooCommerce_Asset {
         }
         
         wp_enqueue_style($handle, fr_address_book_for_woocommerce()->base_url . $src, $deps, $ver, $media);
+        
+        $after_method = "after_{$handle}_style";
+        
+        if (method_exists($this, $after_method)) {
+            $this->{$after_method}();
+        }
     }
     
     /**
@@ -54,5 +60,46 @@ class Fr_Address_Book_for_WooCommerce_Asset {
         }
         
         wp_enqueue_script($handle, fr_address_book_for_woocommerce()->base_url . $src, $deps, $ver, $in_footer);
+        
+        $after_method = "after_{$handle}_script";
+        
+        if (method_exists($this, $after_method)) {
+            $this->{$after_method}();
+        }
+    }
+    
+    /**
+     * Do something after enqueueing <code>fabfw_front_end</code> style.
+     * 
+     * Add custom CSS.
+     * 
+     * @since 1.0.0
+     */
+    private function after_fabfw_front_end_style() {
+        $wc_email_base_color = get_option('woocommerce_email_base_color');
+        
+        // Use email base color as primary color.
+        if ($wc_email_base_color) {
+            $css = "
+                .fabfw-select-address-container .form-row :checked+.radio { 
+                    border-color: $wc_email_base_color; 
+                }
+            ";
+            
+            wp_add_inline_style('fabfw_front_end', $css);
+        }
+    }
+    
+    /**
+     * Do something after enqueueing <code>fabfw_select_address</code> script.
+     * 
+     * Add `fabfw_select_address` variable.
+     * 
+     * @since 1.0.0
+     */
+    private function after_fabfw_select_address_script() {
+        wp_localize_script('fabfw_select_address', 'fabfw_select_address', array(
+            'addresses' => fr_address_book_for_woocommerce()->Customer->get_addresses(),
+        ));
     }
 }
