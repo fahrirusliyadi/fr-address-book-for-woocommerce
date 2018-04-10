@@ -81,8 +81,9 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
                                     'options'   => $field_options,
                                 );
         $field_option_keys      = array_keys($field_options);
-        $saved_address_id       = wc()->customer->get_meta("fabfw_address_{$type}_id") 
-                                ? wc()->customer->get_meta("fabfw_address_{$type}_id")
+        $saved_address_id       = wc()->customer->get_meta("fabfw_address_{$type}_id");
+        $saved_address_id       = isset($field_options[$saved_address_id]) 
+                                ? $saved_address_id 
                                 // Use the first saved address.
                                 : reset($field_option_keys);
         

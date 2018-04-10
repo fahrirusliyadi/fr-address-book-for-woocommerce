@@ -40,7 +40,10 @@
      * @returns {undefined}
      */
     SelectAddress.prototype.onChangeBillingSelect = function(event) {
-        this._updateFieldValues('billing', $(event.target));
+        var $selectedField = $(event.target);
+        
+        this._toggleFields('billing', $selectedField);
+        this._updateFieldValues('billing', $selectedField);
     };
     
     /**
@@ -51,7 +54,10 @@
      * @returns {undefined}
      */
     SelectAddress.prototype.onChangeShippingSelect = function(event) {
-        this._updateFieldValues('shipping', $(event.target));
+        var $selectedField = $(event.target);
+        
+        this._toggleFields('shipping', $selectedField);
+        this._updateFieldValues('shipping', $selectedField);
     };
     
     /**
@@ -61,8 +67,28 @@
      * @returns {undefined}
      */
     SelectAddress.prototype._initFieldValues = function() {        
-        this._updateFieldValues('billing', $('[name="fabfw_address_billing_id"]:checked'));
-        this._updateFieldValues('shipping', $('[name="fabfw_address_shipping_id"]:checked'));
+        var $selectedBillingField   = $('[name="fabfw_address_billing_id"]:checked');
+        var $selectedShippingField  = $('[name="fabfw_address_shipping_id"]:checked');
+        
+        this._toggleFields('billing', $selectedBillingField);
+        this._toggleFields('shipping', $selectedShippingField);
+        this._updateFieldValues('billing', $selectedBillingField);
+        this._updateFieldValues('shipping', $selectedShippingField);
+    };
+    
+    /**
+     * Show the address fields if the customer wants to add a new address, otherwise
+     * hide it.
+     * 
+     * @since 1.0.0
+     * @param {string} type Address type (billing|shipping).
+     * @param {jQuery} $selectedField
+     * @returns {undefined}
+     */
+    SelectAddress.prototype._toggleFields = function(type, $selectedField) {
+        var addressId = $selectedField.val();
+        
+        $('.woocommerce-' + type + '-fields__field-wrapper').toggleClass('hidden', addressId !== 'new');
     };
     
     /**
@@ -70,12 +96,12 @@
      * 
      * @since 1.0.0
      * @param {string} type Address type (billing|shipping).
-     * @param {jQuery} $selectAddress
+     * @param {jQuery} $selectedField
      * @returns {undefined}
      */
-    SelectAddress.prototype._updateFieldValues = function(type, $selectAddress) {
-        var $form           = $selectAddress.closest('form');
-        var address         = fabfw_select_address.addresses[$selectAddress.val()];
+    SelectAddress.prototype._updateFieldValues = function(type, $selectedField) {
+        var $form           = $selectedField.closest('form');
+        var address         = fabfw_select_address.addresses[$selectedField.val()];
         
         if (!address) {
             return;

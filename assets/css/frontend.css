@@ -30,3 +30,8 @@
   padding: 0;
   border: 0;
 }
+
+.woocommerce-billing-fields__field-wrapper.hidden,
+.woocommerce-shipping-fields__field-wrapper.hidden {
+  display: none;
+}

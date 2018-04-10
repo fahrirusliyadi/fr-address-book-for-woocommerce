@@ -26,3 +26,10 @@
         }
     }
 }
+
+.woocommerce-billing-fields__field-wrapper,
+.woocommerce-shipping-fields__field-wrapper {
+    &.hidden {
+        display: none;
+    }
+}
