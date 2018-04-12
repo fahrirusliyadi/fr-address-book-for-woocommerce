@@ -25,8 +25,8 @@ class Fr_Address_Book_for_WooCommerce_Asset {
      */
     public function enqueue_style($handle, $src = '', $deps = array(), $ver = false, $media = 'all') {
         if (defined('WP_DEBUG') && WP_DEBUG === true) {
-            $ver = filemtime(fr_address_book_for_woocommerce()->base_path . $src);
             $src = str_replace('.min.js', '.js', $src);
+            $ver = filemtime(fr_address_book_for_woocommerce()->base_path . $src);
         }
         
         wp_enqueue_style($handle, fr_address_book_for_woocommerce()->base_url . $src, $deps, $ver, $media);
@@ -55,8 +55,8 @@ class Fr_Address_Book_for_WooCommerce_Asset {
      */
     public function enqueue_script($handle, $src = '', $deps = array(), $ver = false, $in_footer = false) {
         if (defined('WP_DEBUG') && WP_DEBUG === true) {
-            $ver = filemtime(fr_address_book_for_woocommerce()->base_path . $src);
             $src = str_replace('.min.js', '.js', $src);
+            $ver = filemtime(fr_address_book_for_woocommerce()->base_path . $src);
         }
         
         wp_enqueue_script($handle, fr_address_book_for_woocommerce()->base_url . $src, $deps, $ver, $in_footer);

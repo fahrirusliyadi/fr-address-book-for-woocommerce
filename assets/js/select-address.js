@@ -86,6 +86,12 @@
      * @returns {undefined}
      */
     SelectAddress.prototype._toggleFields = function(type, $selectedField) {
+        // No saved address yet. The field is a input[type=hidden], so $selectedField 
+        // will not contain any element.
+        if (!$selectedField.length) {
+            return;
+        }
+        
         var addressId = $selectedField.val();
         
         $('.woocommerce-' + type + '-fields__field-wrapper').toggleClass('hidden', addressId !== 'new');
