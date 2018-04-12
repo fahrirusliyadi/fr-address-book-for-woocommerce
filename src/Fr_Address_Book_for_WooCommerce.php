@@ -78,6 +78,7 @@ class Fr_Address_Book_for_WooCommerce {
         $this->Frontend_MyAccount_AddressBookEdit->init();
         $this->Frontend_MyAccount_AddressBookEdit_Action->init();
         $this->Frontend_MyAccount_MyAddress->init();
+        $this->Frontend_Template->init();
         $this->I18n->init();
     }
     

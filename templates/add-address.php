@@ -2,14 +2,14 @@
 /**
  * Add new address form.
  *
- * This template can be overridden by copying it to yourtheme/fr-address-book-for-woocommerce/add-address.php.
+ * This template can be overridden by copying it to your-theme/fr-address-book-for-woocommerce/add-address.php.
  *
  * However, on occasion we will need to update template files and you (the theme 
  * developer) will need to copy the new files to your theme to maintain 
  * compatibility. 
  *
  * @since 1.0.0
- * @version 1.0.0 woocommerce/myaccount/form-edit-address.php@3.3.0
+ * @version 1.0.0 Markup based on woocommerce/myaccount/form-edit-address.php@3.3.0
  * @author Fahri Rusliyadi <fahri.rusliyadi@gmail.com>
  */
 

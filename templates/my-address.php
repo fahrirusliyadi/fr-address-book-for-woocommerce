@@ -1,15 +1,15 @@
 <?php
 /**
- * Addresses.
- *
- * This template can be overridden by copying it to yourtheme/fr-address-book-for-woocommerce/addresses.php.
+ * My Addresses.
+ * 
+ * This template can be overridden by copying it to your-theme/fr-address-book-for-woocommerce/my-address.php.
  *
  * However, on occasion we will need to update template files and you (the theme 
  * developer) will need to copy the new files to your theme to maintain 
  * compatibility. 
  *
  * @since 1.0.0
- * @version 1.0.0 woocommerce/myaccount/my-account.php@2.6.0
+ * @version 2.6.0 
  * @author Fahri Rusliyadi <fahri.rusliyadi@gmail.com>
  */
 
@@ -17,12 +17,15 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-$col = 1;
+$addresses  = fr_address_book_for_woocommerce()->Customer->get_addresses();
+$col        = 1;
 
 ?>
 
 <div class="fabfw-addresses-container">
-    <h2 class="fabfw-title"><?php _e('Additional Addresses', 'fr-address-book-for-woocommerce') ?></h2>
+    <p>
+	<?php echo apply_filters('woocommerce_my_account_my_address_description', __('The following addresses will be used on the checkout page.', 'fr-address-book-for-woocommerce')); ?>
+    </p>
     
     <?php if ($addresses) : ?>
         <div class="u-columns woocommerce-Addresses col2-set addresses">
@@ -53,6 +56,10 @@ $col = 1;
                 </div>
             <?php endforeach ?>
         </div>
+    <?php else : ?>
+        <p>
+            <?php _e('You do not have any saved addresses yet.', 'fr-address-book-for-woocommerce') ?>
+        </p>
     <?php endif ?>
     
     <?php if (count($addresses) < fr_address_book_for_woocommerce()->max_addresses) : ?>

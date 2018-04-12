@@ -72,7 +72,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
         }
         
         if (count($addresses) < fr_address_book_for_woocommerce()->max_addresses) {
-            $field_options['new'] = sprintf('<a class="button">%s</a>', __('New Address', 'fr-address-book-for-woocommerce'));
+            $field_options['new'] = sprintf('<a class="button">%s</a>', __('Add new address', 'fr-address-book-for-woocommerce'));
         }
         
         $field_args             = array(
