@@ -35,7 +35,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookAdd_Action e
      */
     private function add_address() {
         if (count(fr_address_book_for_woocommerce()->Customer->get_addresses()) >= fr_address_book_for_woocommerce()->max_addresses) {
-            wc_add_notice(__('You have reached the maximum number of additional addresses.', 'fr-address-book-for-woocommerce'), 'error');
+            wc_add_notice(__('You have reached the maximum number of addresses.', 'fr-address-book-for-woocommerce'), 'error');
             return;
         }
         

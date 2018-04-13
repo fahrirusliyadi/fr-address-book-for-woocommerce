@@ -140,7 +140,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction 
                             $post_data[$key] = strtoupper(str_replace(' ', '', $post_data[$key]));
 
                             if (!WC_Validation::is_postcode($post_data[$key], $post_data['billing_country'])) {
-                                wc_add_notice(__('Please enter a valid postcode / ZIP.', 'fr-address-book-for-woocommerce'), 'error');
+                                wc_add_notice(__('Please enter a valid postcode/ZIP.', 'fr-address-book-for-woocommerce'), 'error');
                             } else {
                                 $post_data[$key] = wc_format_postcode($post_data[$key], $post_data['billing_country']);
                             }
