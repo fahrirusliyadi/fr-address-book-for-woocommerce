@@ -16,7 +16,8 @@
      * @returns {SelectAddress}
      */
     function SelectAddress() {
-        this.$document = $(document);
+        this.$window    = $(window);
+        this.$document  = $(document);
     }
     
     /**
@@ -28,8 +29,9 @@
     SelectAddress.prototype.init = function() {
         this._initFieldValues();
         
-        this.$document.on('change.fabfw', '[name="fabfw_address_billing_id"]', $.proxy(this.onChangeBillingSelect, this));
-        this.$document.on('change.fabfw', '[name="fabfw_address_shipping_id"]', $.proxy(this.onChangeShippingSelect, this));
+        this.$document.on('change.fabfw', '.fabfw-select-address-container [name="fabfw_address_billing_id"]', $.proxy(this.onChangeBillingSelect, this));
+        this.$document.on('change.fabfw', '.fabfw-select-address-container [name="fabfw_address_shipping_id"]', $.proxy(this.onChangeShippingSelect, this));
+        this.$document.on('click.fabfw', '.fabfw-select-address-container .fabfw-edit', $.proxy(this.onClickEditAddress, this));
     };
     
     /**
@@ -58,6 +60,20 @@
         
         this._toggleFields('shipping', $selectedField);
         this._updateFieldValues('shipping', $selectedField);
+    };
+    
+    /**
+     * Click event handler for edit address link.
+     * 
+     * @since 1.0.0
+     * @param {Event} event
+     * @returns {undefined}
+     */
+    SelectAddress.prototype.onClickEditAddress = function(event) {
+        var type = $(event.target).closest('#fabfw_address_billing_id_field').length ? 'billing' : 'shipping';
+        
+        event.preventDefault();        
+        this._showFields(type);
     };
     
     /**
@@ -95,6 +111,20 @@
         var addressId = $selectedField.val();
         
         $('.woocommerce-' + type + '-fields__field-wrapper').toggleClass('hidden', addressId !== 'new');
+    };
+    
+    /**
+     * Show the address fields and focus to the first visible field.
+     * 
+     * @since 1.0.0
+     * @param {string} type Address type (billing|shipping).
+     * @returns {undefined}
+     */
+    SelectAddress.prototype._showFields = function(type) {
+        var $fieldsWrapper  = $('.woocommerce-' + type + '-fields__field-wrapper');
+        
+        $fieldsWrapper.removeClass('hidden');
+        $fieldsWrapper.find(':input:visible').first().focus();
     };
     
     /**

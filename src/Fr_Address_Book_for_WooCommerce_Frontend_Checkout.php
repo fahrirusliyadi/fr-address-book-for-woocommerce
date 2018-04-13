@@ -53,8 +53,8 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
      * @since 0.1.10
      */
     private function enqueue_scripts() {
-        fr_address_book_for_woocommerce()->Asset->enqueue_style('fabfw_front_end', 'assets/css/frontend.min.css', array(), fr_address_book_for_woocommerce()->version);
-        fr_address_book_for_woocommerce()->Asset->enqueue_script('fabfw_select_address', 'assets/js/select-address.min.js', array('jquery'), fr_address_book_for_woocommerce()->version, true);
+        fr_address_book_for_woocommerce()->Asset->enqueue_style('fabfw_front_end');
+        fr_address_book_for_woocommerce()->Asset->enqueue_script('fabfw_select_address');
     }
 
     /**
@@ -69,6 +69,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
         
         foreach ($addresses as $id => $value) {
             $field_options[$id] = wc()->countries->get_formatted_address($value);
+            $field_options[$id] .= sprintf('<br><a href="#" class="fabfw-edit">%s</a>', __('Edit', 'fr-address-book-for-woocommerce'));
         }
         
         if (count($addresses) < fr_address_book_for_woocommerce()->max_addresses) {

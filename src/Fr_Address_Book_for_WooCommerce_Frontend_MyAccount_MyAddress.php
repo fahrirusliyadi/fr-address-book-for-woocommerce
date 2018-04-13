@@ -37,6 +37,6 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_MyAddress {
      * @since 1.0.0
      */
     private function enqueue_frontend_style() {        
-        fr_address_book_for_woocommerce()->Asset->enqueue_style('fabfw_front_end', 'assets/css/frontend.min.css', array(), fr_address_book_for_woocommerce()->version);
+        fr_address_book_for_woocommerce()->Asset->enqueue_style('fabfw_front_end');
     }
 }

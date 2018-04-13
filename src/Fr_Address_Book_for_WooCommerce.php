@@ -71,6 +71,7 @@ class Fr_Address_Book_for_WooCommerce {
      * @since 1.0.0
      */
     public function init() {
+        $this->Asset->init();
         $this->Frontend_Checkout->init();
         $this->Frontend_Checkout_Action->init();
         $this->Frontend_MyAccount_AddressBookAdd->init();
