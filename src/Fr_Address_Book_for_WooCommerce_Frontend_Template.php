@@ -87,6 +87,13 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Template {
             $template_path = fr_address_book_for_woocommerce()->base_path . "templates/$template_name";
         }
         
-        return $template_path;
+        /**
+         * Filters the located template.
+         * 
+         * @since 1.0.0
+         * @param string $template_path Located template path.
+         * @param string $template_name Template name.
+         */
+        return apply_filters('fr_address_book_for_woocommerce_frontend_template__locate_template', $template_path, $template_name);
     }
 }
