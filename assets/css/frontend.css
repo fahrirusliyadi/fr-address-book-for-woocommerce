@@ -1,3 +1,7 @@
+.fabfw-select-address-container .form-row label {
+  cursor: pointer;
+}
+
 .fabfw-select-address-container .form-row label:not(.radio) {
   display: none;
 }

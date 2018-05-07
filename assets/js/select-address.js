@@ -108,9 +108,11 @@
             return;
         }
         
-        var addressId = $selectedField.val();
+        var addressId   = $selectedField.val();
+        var $newButton  = $selectedField.closest('.fabfw-select-address-container').find('[for="fabfw_address_' + type + '_id_new"] .button');
         
         $('.woocommerce-' + type + '-fields__field-wrapper').toggleClass('hidden', addressId !== 'new');
+        $newButton.toggleClass('disabled', addressId === 'new');
     };
     
     /**
