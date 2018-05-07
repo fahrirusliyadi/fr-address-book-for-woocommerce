@@ -3,6 +3,8 @@
  * My Addresses.
  * 
  * This template can be overridden by copying it to your-theme/fr-address-book-for-woocommerce/my-address.php.
+ * 
+ * This template overrides woocommerce/templates/myaccount/my-address.php.
  *
  * However, on occasion we will need to update template files and you (the theme 
  * developer) will need to copy the new files to your theme to maintain 
