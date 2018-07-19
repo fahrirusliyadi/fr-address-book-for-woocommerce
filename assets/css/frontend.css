@@ -10,10 +10,6 @@
   display: none;
 }
 
-.fabfw-select-address-container .form-row :checked + .radio {
-  border-color: #a00;
-}
-
 .fabfw-select-address-container .form-row .radio {
   padding: 1em;
   border: 2px solid #eee;
@@ -28,6 +24,14 @@
 
 .fabfw-select-address-container .form-row .fabfw-edit {
   margin-top: 1em;
+  display: none;
+}
+
+.fabfw-select-address-container .form-row :checked + .radio {
+  border-color: #a00;
+}
+
+.fabfw-select-address-container .form-row :checked + .radio .fabfw-edit {
   display: inline-block;
 }
 

@@ -8,7 +8,7 @@
  * Text Domain:     fr-address-book-for-woocommerce
  * Domain Path:     /languages
  * Version:         1.0.0
- * WC tested up to: 3.4.2
+ * WC tested up to: 3.4.3
  *
  * @package         Fr_Address_Book_For_Woocommerce
  */

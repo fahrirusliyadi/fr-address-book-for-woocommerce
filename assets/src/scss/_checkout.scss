@@ -12,10 +12,6 @@
             display: none;
         }
 
-        :checked + .radio {
-            border-color: $red;
-        }
-
         .radio {
             padding: 1em;
             border: 2px solid #eee;
@@ -31,7 +27,15 @@
         
         .fabfw-edit {
             margin-top: 1em;
-            display: inline-block;
+            display: none;
+        }
+
+        :checked + .radio {
+            border-color: $red;
+            
+            .fabfw-edit {
+                display: inline-block;
+            }
         }
     }
 }
