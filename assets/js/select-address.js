@@ -31,7 +31,9 @@
         
         this.$document.on('change.fabfw', '.fabfw-select-address-container [name="fabfw_address_billing_id"]', $.proxy(this.onChangeBillingSelect, this));
         this.$document.on('change.fabfw', '.fabfw-select-address-container [name="fabfw_address_shipping_id"]', $.proxy(this.onChangeShippingSelect, this));
-        this.$document.on('click.fabfw', '.fabfw-select-address-container .fabfw-edit', $.proxy(this.onClickEditAddress, this));
+        // Cannot use descendants selector because WooCommerce@3.4.0 is stopping event propagation.
+        // https://github.com/woocommerce/woocommerce/blob/e8d8e25de1f0a43e9bd89f1c54625ede125a2b97/assets/js/frontend/woocommerce.js#L35-L37
+        this.$document.find('.fabfw-select-address-container .fabfw-edit').on('click.fabfw', $.proxy(this.onClickEditAddress, this));
     };
     
     /**
