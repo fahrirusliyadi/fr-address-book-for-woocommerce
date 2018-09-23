@@ -22,6 +22,7 @@
  * @property Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_MyAddress $Frontend_MyAccount_MyAddress
  * @property Fr_Address_Book_for_WooCommerce_Frontend_Template $Frontend_Template
  * @property Fr_Address_Book_for_WooCommerce_I18n $I18n
+ * @property Fr_Address_Book_for_WooCommerce_Theme_Support $Theme_Support
  */
 class Fr_Address_Book_for_WooCommerce {
     /**
@@ -81,6 +82,7 @@ class Fr_Address_Book_for_WooCommerce {
         $this->Frontend_MyAccount_MyAddress->init();
         $this->Frontend_Template->init();
         $this->I18n->init();
+        $this->Theme_Support->init();
     }
     
     /**
