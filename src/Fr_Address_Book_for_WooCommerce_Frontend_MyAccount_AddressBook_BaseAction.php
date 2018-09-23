@@ -6,7 +6,7 @@
  * @since 1.0.0
  * @author Fahri Rusliyadi <fahri.rusliyadi@gmail.com>
  */
-class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction {    
+abstract class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction {    
     /**
      * Register actions and filters with WordPress.
      * 
@@ -22,9 +22,7 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction 
      * @since 1.0.0
      * @return void
      */
-    public function on_template_redirect() {
-            
-    }
+    abstract public function on_template_redirect();
     
     /**
      * Save new or updated address.
