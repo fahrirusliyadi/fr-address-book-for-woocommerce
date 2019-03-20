@@ -18,6 +18,7 @@ The address book contains the customer's default billing and shipping addresses,
 
 1. Upload `fr-address-book-for-woocommerce` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the **Plugins** menu in WordPress
+1. Go to *WooCommerce* &rarr; *Settings* &rarr; *Accounts & Privacy* &rarr; *Address book* to configure the plugin.
 
 == Frequently Asked Questions ==
 

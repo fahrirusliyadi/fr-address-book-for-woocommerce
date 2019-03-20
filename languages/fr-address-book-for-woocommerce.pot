@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fr Address Book for Woocommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-13 02:57+0000\n"
+"POT-Creation-Date: 2019-03-20 03:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,13 +14,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: src/Fr_Address_Book_for_WooCommerce_Frontend_Checkout.php:75
-#: templates/my-address.php:66
-msgid "Add new address"
+#: src/Fr_Address_Book_for_WooCommerce_Admin_Account.php:31
+#: src/Fr_Address_Book_for_WooCommerce_Admin_Account.php:54
+msgid "General"
 msgstr ""
 
-#: src/Fr_Address_Book_for_WooCommerce_Frontend_Checkout.php:79
+#: src/Fr_Address_Book_for_WooCommerce_Admin_Account.php:34
+#: templates/select-address.php:35
 msgid "Address book"
+msgstr ""
+
+#: src/Fr_Address_Book_for_WooCommerce_Admin_Account.php:59
+msgid "Max addresses"
+msgstr ""
+
+#: src/Fr_Address_Book_for_WooCommerce_Admin_Account.php:60
+msgid "The maximum number of addresses a customer allowed to save."
+msgstr ""
+
+#: src/Fr_Address_Book_for_WooCommerce_Admin_Plugins.php:28
+msgid "Settings"
 msgstr ""
 
 #: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookAdd.php:51
@@ -47,21 +60,21 @@ msgstr ""
 msgid "Address changed successfully."
 msgstr ""
 
-#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:132
+#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:130
 #, php-format
 msgid "%s is a required field."
 msgstr ""
 
-#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:143
+#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:141
 msgid "Please enter a valid postcode/ZIP."
 msgstr ""
 
-#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:153
+#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:151
 #, php-format
 msgid "%s is not a valid phone number."
 msgstr ""
 
-#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:161
+#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:159
 #, php-format
 msgid "%s is not a valid email address."
 msgstr ""
@@ -74,24 +87,28 @@ msgstr ""
 msgid "Save address"
 msgstr ""
 
-#: templates/my-address.php:27
+#: templates/my-address.php:29
 msgid "The following addresses will be used on the checkout page."
 msgstr ""
 
-#: templates/my-address.php:44
+#: templates/my-address.php:46
 msgid "Are you sure you want to delete this address?"
 msgstr ""
 
-#: templates/my-address.php:44
+#: templates/my-address.php:46
 msgid "Delete"
 msgstr ""
 
-#: templates/my-address.php:45
+#: templates/my-address.php:47 templates/select-address.php:24
 msgid "Edit"
 msgstr ""
 
-#: templates/my-address.php:61
+#: templates/my-address.php:63
 msgid "You do not have any saved addresses yet."
+msgstr ""
+
+#: templates/my-address.php:68 templates/select-address.php:28
+msgid "Add new address"
 msgstr ""
 
 #. Name of the plugin

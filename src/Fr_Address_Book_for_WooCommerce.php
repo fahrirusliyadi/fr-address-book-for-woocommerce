@@ -11,6 +11,9 @@
  * @property string $file The filename of the plugin.
  * @property string $version Plugin version.
  * @property int $max_addresses Maximum number of addresses.
+ * @property Fr_Address_Book_for_WooCommerce_Activator $Activator
+ * @property Fr_Address_Book_for_WooCommerce_Admin_Account $Admin_Account
+ * @property Fr_Address_Book_for_WooCommerce_Admin_Plugins $Admin_Plugins
  * @property Fr_Address_Book_for_WooCommerce_Asset $Asset
  * @property Fr_Address_Book_for_WooCommerce_Customer $Customer
  * @property Fr_Address_Book_for_WooCommerce_Frontend_Checkout $Frontend_Checkout
@@ -72,6 +75,11 @@ class Fr_Address_Book_for_WooCommerce {
      * @since 1.0.0
      */
     public function init() {
+        if (is_admin()) {
+            $this->Admin_Account->init();
+            $this->Admin_Plugins->init();
+        }
+        
         $this->Asset->init();
         $this->Frontend_Checkout->init();
         $this->Frontend_Checkout_Action->init();
@@ -136,6 +144,6 @@ class Fr_Address_Book_for_WooCommerce {
      * @return int
      */
     public function get_max_addresses() {
-        return 10;
+        return (int) get_option('fabfw_max_addresses', 10);
     }
 }
