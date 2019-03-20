@@ -46,8 +46,11 @@ define('FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_FILE', __FILE__);
  * @param string $class Class name.
  */
 function fr_address_book_for_woocommerce_autoloader($class) {
-    $path = FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_PATH . "src/$class.php";
+    if (strpos($class, 'Fr_Address_Book_for_WooCommerce') === false) {
+        return;
+    }
     
+    $path = FR_ADDRESS_BOOK_FOR_WOOCOMMERCE_PATH . "src/$class.php";    
     if (file_exists($path)) {
         require $path;
     }
