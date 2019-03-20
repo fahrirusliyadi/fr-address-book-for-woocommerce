@@ -45,36 +45,39 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action {
      * @param array $data Posted data.
      */
     private function save_address($type, $customer, $data) {
-        if (count(fr_address_book_for_woocommerce()->Customer->get_addresses()) >= fr_address_book_for_woocommerce()->max_addresses) {
-            return;
-        }
-        
-        $selected_address_id = filter_input(INPUT_POST, "fabfw_address_{$type}_id");
-        
+        $selected_address_id = filter_input(INPUT_POST, "fabfw_address_{$type}_id");        
         if (!$selected_address_id) {
             return;
         }
         
-        $address = $customer->{"get_$type"}();
+        $address_data = $customer->{"get_$type"}();
         
         // Save custom address fields that may be provided by other plugins.
         foreach ($data as $key => $value) {            
-            // Exclude array and object values.
-            if (is_array($value) || is_object($value) || strpos($key, "{$type}_") !== 0) {
+            // Exclude non-scalar and non-address values.
+            if (!is_scalar($value) || strpos($key, "{$type}_") !== 0) {
                 continue;
             }
             
             $key = preg_replace("/^{$type}_/", '', $key);
             
-            if (!isset($address[$key])) {
-                $address[$key]  = $value;
+            if (!isset($address_data[$key])) {
+                $address_data[$key]  = $value;
             }
         }
         
         if ($selected_address_id === 'new') {
-            $customer->add_meta_data("fabfw_address", $address);
+            if (count(fr_address_book_for_woocommerce()->Customer->get_addresses()) < fr_address_book_for_woocommerce()->max_addresses) {
+                $customer->add_meta_data("fabfw_address", $address_data);
+            }
         } else {
-            $customer->update_meta_data("fabfw_address", $address, $selected_address_id);
+            // Cast to integer because WooCommerce uses strict comparison.
+            // https://github.com/woocommerce/woocommerce/blob/3.5.7/includes/abstracts/abstract-wc-data.php#L428
+            $selected_address_id    = (int) $selected_address_id;
+            $old_addresses          = fr_address_book_for_woocommerce()->Customer->get_addresses();
+            $address_data           = isset($old_addresses[$selected_address_id]) ? array_merge($old_addresses[$selected_address_id], $address_data) : $address_data;
+            
+            $customer->update_meta_data("fabfw_address", $address_data, $selected_address_id);
             $customer->update_meta_data("fabfw_address_{$type}_id", $selected_address_id);
         }
     }

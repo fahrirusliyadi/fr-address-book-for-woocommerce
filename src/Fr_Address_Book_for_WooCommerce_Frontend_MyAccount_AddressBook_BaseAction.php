@@ -39,12 +39,8 @@ abstract class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_Ba
         $address_data   = array();
         
         foreach($post_data as $key => $value) {
-            if (
-                // Exclude array and object values.
-                is_array($value) || is_object($value) ||
-                // Exclude non billing fields.
-                strpos($key, 'billing_') !== 0 
-            ) {
+            // Exclude non-scalar and non-billing values.
+            if (!is_scalar($value) || strpos($key, 'billing_') !== 0) {
                 continue;
             }
             
