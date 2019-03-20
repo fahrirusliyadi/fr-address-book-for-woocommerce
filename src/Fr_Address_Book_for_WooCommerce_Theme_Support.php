@@ -13,31 +13,21 @@ class Fr_Address_Book_for_WooCommerce_Theme_Support {
      * @since 1.0.0
      */
     public function init() {
-        add_action('init', array($this, 'on_init'));
-    }
-    
-    /**
-     * <code>init</code> action handler.
-     * 
-     * @since 1.0.0
-     */
-    public function on_init() {
-        $this->theme_support_init();
+        add_action('init', array($this, 'theme_support_init'));
     }
     
     /**
      * Initialize theme supports.
      * 
      * @since 1.0.0
+     * @access private
      */
-    protected function theme_support_init() {
-        if (!is_admin()) {
-            $theme_name = get_template();
-            $init_method = str_replace(array(' ', '-'), '_', $theme_name) . '_init';
-            
-            if (method_exists($this, $init_method)) {
-                $this->$init_method();
-            }
+    public function theme_support_init() {
+        $theme_name = get_template();
+        $init_method = str_replace(array(' ', '-'), '_', $theme_name) . '_init';
+
+        if (method_exists($this, $init_method)) {
+            $this->$init_method();
         }
     }
     
@@ -54,8 +44,34 @@ class Fr_Address_Book_for_WooCommerce_Theme_Support {
      * Enqueue Twenty Seventeen scripts and styles.
      * 
      * @since 1.0.0
+     * @access private
      */
     public function twentyseventeen_scripts() {
+        $css = "
+            .fabfw-addresses-container .fabfw-delete-link {
+                margin-left: 0;
+            }
+        ";
+        
+        wp_add_inline_style('fabfw_front_end', $css);
+    }
+    
+    /**
+     * Initialize Twenty Nineteen theme support.
+     * 
+     * @since 1.1.0
+     */
+    protected function twentynineteen_init() {
+        add_action('wp_enqueue_scripts', array($this, 'twentyseventeen_scripts'));
+    }
+    
+    /**
+     * Enqueue Twenty Nineteen scripts and styles.
+     * 
+     * @since 1.1.0
+     * @access private
+     */
+    public function twentynineteen_scripts() {
         $css = "
             .fabfw-addresses-container .fabfw-delete-link {
                 margin-left: 0;

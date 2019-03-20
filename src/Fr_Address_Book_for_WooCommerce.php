@@ -78,19 +78,23 @@ class Fr_Address_Book_for_WooCommerce {
         if (is_admin()) {
             $this->Admin_Account->init();
             $this->Admin_Plugins->init();
+        } else {
+            $this->Asset->init();
+            $this->Frontend_Checkout->init();
+            $this->Frontend_MyAccount_AddressBookAdd->init();
+            $this->Frontend_MyAccount_AddressBookAdd_Action->init();
+            $this->Frontend_MyAccount_AddressBookEdit->init();
+            $this->Frontend_MyAccount_AddressBookEdit_Action->init();
+            $this->Frontend_MyAccount_MyAddress->init();
+            $this->Frontend_Template->init();
+            $this->Theme_Support->init();
         }
         
-        $this->Asset->init();
-        $this->Frontend_Checkout->init();
-        $this->Frontend_Checkout_Action->init();
-        $this->Frontend_MyAccount_AddressBookAdd->init();
-        $this->Frontend_MyAccount_AddressBookAdd_Action->init();
-        $this->Frontend_MyAccount_AddressBookEdit->init();
-        $this->Frontend_MyAccount_AddressBookEdit_Action->init();
-        $this->Frontend_MyAccount_MyAddress->init();
-        $this->Frontend_Template->init();
+        if (!is_admin() || defined('DOING_AJAX') && DOING_AJAX) {
+            $this->Frontend_Checkout_Action->init();
+        }
+        
         $this->I18n->init();
-        $this->Theme_Support->init();
     }
     
     /**
