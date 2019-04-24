@@ -81,9 +81,7 @@ class Fr_Address_Book_for_WooCommerce {
         } else {
             $this->Asset->init();
             $this->Frontend_Checkout->init();
-            $this->Frontend_MyAccount_AddressBookAdd->init();
             $this->Frontend_MyAccount_AddressBookAdd_Action->init();
-            $this->Frontend_MyAccount_AddressBookEdit->init();
             $this->Frontend_MyAccount_AddressBookEdit_Action->init();
             $this->Frontend_MyAccount_MyAddress->init();
             $this->Frontend_Template->init();
@@ -95,6 +93,12 @@ class Fr_Address_Book_for_WooCommerce {
         }
         
         $this->I18n->init();
+
+        // These services has action to register endpoints, so these need to be hooked 
+        // not only on public area, but also admin area. This is because the rewrite 
+        // rules will be flushed when saving permalink settings.
+        $this->Frontend_MyAccount_AddressBookAdd->init();
+        $this->Frontend_MyAccount_AddressBookEdit->init();
     }
     
     /**
