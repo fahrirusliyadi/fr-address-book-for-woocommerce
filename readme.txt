@@ -2,9 +2,9 @@
 Contributors: fahrirusliyadi
 Donate link: https://paypal.me/FahriRusliyadi
 Tags: multi, multiple, woocommerce, address, addresses, address-book
-Requires at least: 4.4
+Requires at least: 4.9
 Tested up to: 5.1.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,9 @@ No.
 3. Checkout page
 
 == Changelog ==
+
+= 1.1.1 =
+* Fix missing endpoints after saving permalink settings.
 
 = 1.1.0 =
 * Add option to set the maximum number of addresses.
