@@ -1,18 +1,22 @@
 {
-  "name": "fr-address-book-for-woocommerce",
-  "version": "1.0.0",
-  "author": "Fahri Rusliyadi",
+  "author": "Fahri Rusliyadi <fahri.rusliyadi@gmail.com>",
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.1",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-clean-css": "^3.9.3",
     "gulp-plumber": "^1.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "gulp-zip": "^4.2.0"
   },
   "scripts": {
-    "gulp": "gulp"
+    "build:css": "gulp build:css",
+    "build:js": "gulp build:js",
+    "watch:css": "gulp watch:css",
+    "watch:js": "gulp watch:js",
+    "watch": "gulp watch",
+    "zip": "gulp zip"
   }
 }

@@ -1,15 +1,16 @@
 "use strict";
 
-var gulp            = require('gulp');
-var plumber         = require('gulp-plumber');
-var sourcemaps      = require('gulp-sourcemaps');
-var rename          = require("gulp-rename");
-var sass            = require('gulp-sass');
-var autoprefixer    = require('gulp-autoprefixer');
-var cleanCss        = require('gulp-clean-css');
-var uglify          = require('gulp-uglify');
+const gulp          = require('gulp');
+const plumber       = require('gulp-plumber');
+const sourcemaps    = require('gulp-sourcemaps');
+const rename        = require("gulp-rename");
+const sass          = require('gulp-sass');
+const autoprefixer  = require('gulp-autoprefixer');
+const cleanCss      = require('gulp-clean-css');
+const uglify        = require('gulp-uglify');
+const zip           = require('gulp-zip');
 
-function css() {
+function buildCss() {
     return gulp.src('./assets/src/scss/*.scss')
         .pipe(plumber())
         .pipe(sourcemaps.init())
@@ -28,8 +29,11 @@ function css() {
         .pipe(gulp.dest('./assets/css/'));
 }
 
-function js() {
-    return gulp.src(['./assets/js/*.js', '!./assets/js/*.min.js'])
+function buildJs() {
+    return gulp.src([
+            './assets/js/*.js', 
+            '!./assets/js/*.min.js'
+        ])
         .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(uglify())
@@ -40,11 +44,36 @@ function js() {
         .pipe(gulp.dest('./assets/js/'));
 }
 
-function watch() {
-    gulp.watch(['./assets/src/scss/*.scss'], css);
-    gulp.watch(['./assets/js/*.js', '!./assets/js/*.min.js'], js);
+function watchCss() {
+    return gulp.watch(['./assets/src/scss/*.scss'], buildCss);
+}
+
+function watchJs() {   
+    return gulp.watch([
+        './assets/js/*.js', 
+        '!./assets/js/*.min.js'
+    ], buildJs);
+}
+
+function makeZip() {
+    return gulp.src([
+        '**',
+        '!.*',
+        '!assets/src/**',
+        '!node_modules/**',
+        '!gulpfile.js',
+        '!package.json',
+        '!yarn.lock'
+    ], {
+        base: '../'
+    })
+        .pipe(zip('fr-address-book-for-woocommerce.zip'))
+        .pipe(gulp.dest('../'));
 }
  
-gulp.task('css', css);
-gulp.task('js', js);
-gulp.task('default', watch);
+gulp.task('build:css', buildCss);
+gulp.task('build:js', buildJs);
+gulp.task('watch:css', watchCss);
+gulp.task('watch:js', watchJs);
+gulp.task('watch', gulp.parallel('watch:css', 'watch:js'));
+gulp.task('zip', makeZip);
