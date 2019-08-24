@@ -15,6 +15,7 @@
  * @property Fr_Address_Book_for_WooCommerce_Admin_Account $Admin_Account
  * @property Fr_Address_Book_for_WooCommerce_Admin_Plugins $Admin_Plugins
  * @property Fr_Address_Book_for_WooCommerce_Asset $Asset
+ * @property Fr_Address_Book_for_WooCommerce_Countries $Countries
  * @property Fr_Address_Book_for_WooCommerce_Customer $Customer
  * @property Fr_Address_Book_for_WooCommerce_Frontend_Checkout $Frontend_Checkout
  * @property Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action $Frontend_Checkout_Action
@@ -93,6 +94,7 @@ class Fr_Address_Book_for_WooCommerce {
         }
         
         $this->I18n->init();
+        $this->Countries->init();
 
         // These services has action to register endpoints, so these need to be hooked 
         // not only on public area, but also admin area. This is because the rewrite 

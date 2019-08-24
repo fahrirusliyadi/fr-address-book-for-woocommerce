@@ -26,7 +26,7 @@ $col        = 1;
 
 <div class="fabfw-addresses-container">
     <p>
-	<?php echo apply_filters('woocommerce_my_account_my_address_description', __('The following addresses will be used on the checkout page.', 'fr-address-book-for-woocommerce')); ?>
+	    <?php echo apply_filters('woocommerce_my_account_my_address_description', __('The following addresses will be used on the checkout page.', 'fr-address-book-for-woocommerce')); ?>
     </p>
     
     <?php if ($addresses) : ?>
@@ -41,19 +41,18 @@ $col        = 1;
                 ?>
                 <div class="u-column<?php echo $col < 0 ? 1 : 2; ?> col-<?php echo $col < 0 ? 1 : 2; ?> woocommerce-Address">
                     <header class="woocommerce-Address-title title">
-                        <h3><?php echo $address['first_name'] ?> <?php echo $address['last_name'] ?></h3>
+                        <?php if (isset($address['address_name']) && $address['address_name']) : ?>
+                            <h3><?php echo $address['address_name'] ?></h3>
+                        <?php else: ?>
+                            <h3><?php echo $address['first_name'] ?> <?php echo $address['last_name'] ?></h3>
+                        <?php endif ?>
 
                         <a href="<?php echo esc_url($delete_url) ?>" class="edit fabfw-delete-link" onclick="return confirm('<?php esc_attr_e('Are you sure you want to delete this address?', 'fr-address-book-for-woocommerce') ?>');"><?php _e('Delete', 'fr-address-book-for-woocommerce') ?></a>
                         <a href="<?php echo esc_url($edit_url) ?>" class="edit"><?php _e('Edit', 'fr-address-book-for-woocommerce') ?></a>
                     </header>
 
                     <address>
-                        <?php 
-                        // Remove first name and last name. It has already displayed as the title.
-                        unset($address['first_name']); 
-                        unset($address['last_name']);
-                        echo wc()->countries->get_formatted_address($address);
-                        ?>
+                        <?php echo wc()->countries->get_formatted_address($address) ?>
                     </address>
                 </div>
             <?php endforeach ?>

@@ -20,7 +20,10 @@
 $field_options  = array();
 
 foreach ($addresses as $id => $value) {
-    $field_options[$id] = wc()->countries->get_formatted_address($value);
+    $field_options[$id] = isset($value['address_name']) && $value['address_name'] 
+                        ? sprintf('<strong class="fabfw-address-name">%s</strong><br>', $value['address_name']) 
+                        : '';
+    $field_options[$id] .= wc()->countries->get_formatted_address($value);
     $field_options[$id] .= sprintf('<br><a href="#" class="fabfw-edit">%s</a>', __('Edit', 'fr-address-book-for-woocommerce'));
 }
 
