@@ -25,10 +25,6 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action {
      * @return void
      */
     public function on_woocommerce_checkout_update_customer($customer, $data) {
-        if (!wp_verify_nonce(filter_input(INPUT_POST, 'fabfw_save'), 'fabfw_save')) {
-            return;
-        }
-        
         $this->save_address('billing', $customer, $data);
         
         if ($data['ship_to_different_address']) {

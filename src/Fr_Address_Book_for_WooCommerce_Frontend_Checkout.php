@@ -25,12 +25,13 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
      */
     public function on_woocommerce_before_checkout_billing_form($checkout) {
         if (!wc()->customer->get_id()) {
+            echo '<input type="hidden" name="fabfw_address_billing_id" value="new">';
+            echo '<input type="hidden" name="fabfw_address_shipping_id" value="new">';
             return;
         }
         
         $this->enqueue_scripts();
         $this->display_select_address_field('billing');
-        wp_nonce_field('fabfw_save', 'fabfw_save');
     }
     
     /**
