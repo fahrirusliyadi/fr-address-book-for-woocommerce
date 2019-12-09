@@ -3,8 +3,8 @@ Contributors: fahrirusliyadi
 Donate link: https://paypal.me/FahriRusliyadi
 Tags: multi, multiple, woocommerce, address, addresses, address-book
 Requires at least: 4.9
-Tested up to: 5.2.2
-Stable tag: 1.2.0
+Tested up to: 5.3
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,9 @@ No.
 3. Checkout page
 
 == Changelog ==
+
+= 1.2.1 =
+* Fix address not saved for new customers who create the account at checkout.
 
 = 1.2.0 =
 * Add option to give each addresses a name.
