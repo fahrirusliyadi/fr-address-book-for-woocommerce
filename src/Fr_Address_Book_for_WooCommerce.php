@@ -81,7 +81,6 @@ class Fr_Address_Book_for_WooCommerce {
             $this->Admin_Plugins->init();
         } else {
             $this->Asset->init();
-            $this->Frontend_Checkout->init();
             $this->Frontend_MyAccount_AddressBookAdd_Action->init();
             $this->Frontend_MyAccount_AddressBookEdit_Action->init();
             $this->Frontend_MyAccount_MyAddress->init();
@@ -91,6 +90,9 @@ class Fr_Address_Book_for_WooCommerce {
         
         if (!is_admin() || defined('DOING_AJAX') && DOING_AJAX) {
             $this->Frontend_Checkout_Action->init();
+
+            // Also hook on AJAX because Elementor renders elements using AJAX.
+            $this->Frontend_Checkout->init();
         }
         
         $this->I18n->init();
