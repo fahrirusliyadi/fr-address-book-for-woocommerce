@@ -3,7 +3,7 @@ Contributors: fahrirusliyadi
 Donate link: https://paypal.me/FahriRusliyadi
 Tags: multi, multiple, woocommerce, address, addresses, address-book
 Requires at least: 4.9
-Tested up to: 5.3
+Tested up to: 5.4
 Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,6 +38,10 @@ No.
 3. Checkout page
 
 == Changelog ==
+
+= 1.2.2 =
+* Fix the select address field is not displayed on Elementor editor.
+* Fix address options are encoded with HTML entities on WooCommerce 4.2.2.
 
 = 1.2.1 =
 * Fix address not saved for new customers who create the account at checkout.

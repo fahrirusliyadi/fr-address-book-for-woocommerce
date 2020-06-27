@@ -34,11 +34,25 @@ if (count($addresses) < fr_address_book_for_woocommerce()->max_addresses) {
 
 <div class="fabfw-select-address-container">                     
     <?php if ($addresses) : ?>
-        <?php woocommerce_form_field("fabfw_address_{$type}_id", array(
-            'label'     => __('Address book', 'fr-address-book-for-woocommerce'),
-            'type'      => 'radio',
-            'options'   => $field_options,
-        ), $saved_address_id) ?>
+        <p class="form-row" id="<?php echo "fabfw_address_{$type}_id_field" ?>">
+            <label><?php esc_html_e('Address book', 'fr-address-book-for-woocommerce') ?></label>
+
+            <span class="woocommerce-input-wrapper">
+                <?php foreach ($field_options as $id => $label) : ?>
+					<input 
+                        type="radio" 
+                        class="input-radio" 
+                        value="<?php echo $id ?>" 
+                        name="<?php echo "fabfw_address_{$type}_id" ?>" 
+                        id="<?php echo "fabfw_address_{$type}_id_{$id}" ?>"
+                        <?php checked($id, $saved_address_id) ?>
+                    />
+                    <label for="<?php echo "fabfw_address_{$type}_id_{$id}" ?>" class="radio">
+                        <?php echo $label ?>
+                    </label>
+                <?php endforeach ?>
+            </span>
+        </p>
     <?php 
         // Hide the field if no addresses saved yet.
         else : ?>
