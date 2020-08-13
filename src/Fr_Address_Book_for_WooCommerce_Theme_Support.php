@@ -80,4 +80,29 @@ class Fr_Address_Book_for_WooCommerce_Theme_Support {
         
         wp_add_inline_style('fabfw_front_end', $css);
     }
+
+    /**
+     * Initialzie Twenty Twenty theme support.
+     *
+     * @since 1.3.0
+     */
+    protected function twentytwenty_init() {
+        add_action('wp_enqueue_scripts', array($this, 'twentytwenty_scripts'));
+    }
+    
+    /**
+     * Enqueue Twenty Twenty scripts and styles.
+     * 
+     * @since 1.3.0
+     * @access private
+     */
+    public function twentytwenty_scripts() {
+        $css = "
+            .fabfw-addresses-container .edit {
+                margin-left: 0;
+            }
+        ";
+        
+        wp_add_inline_style('fabfw_front_end', $css);
+    }
 }
