@@ -164,6 +164,10 @@
             // https://stackoverflow.com/a/3179392
             $field.trigger('change');
         });
+
+        // Trigger update checkout.
+        // https://github.com/woocommerce/woocommerce/blob/4.5.2/assets/js/frontend/checkout.js#L41
+        $form.trigger('update');
     };
 
     new SelectAddress().init();

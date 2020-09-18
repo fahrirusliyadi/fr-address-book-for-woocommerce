@@ -3,7 +3,7 @@ Contributors: fahrirusliyadi
 Donate link: https://paypal.me/FahriRusliyadi
 Tags: multi, multiple, woocommerce, address, addresses, address-book
 Requires at least: 4.9
-Tested up to: 5.4
+Tested up to: 5.5.1
 Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,6 +38,9 @@ No.
 3. Checkout page
 
 == Changelog ==
+
+= 1.2.3 =
+* Fix order total not recalculated when post code changed.
 
 = 1.2.2 =
 * Fix the select address field is not displayed on Elementor editor.
