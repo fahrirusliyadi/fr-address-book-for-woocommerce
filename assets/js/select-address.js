@@ -34,6 +34,7 @@
         // Cannot use descendants selector because WooCommerce@3.4.0 is stopping event propagation.
         // https://github.com/woocommerce/woocommerce/blob/e8d8e25de1f0a43e9bd89f1c54625ede125a2b97/assets/js/frontend/woocommerce.js#L35-L37
         this.$document.find('.fabfw-select-address-container .fabfw-edit').on('click.fabfw', $.proxy(this.onClickEditAddress, this));
+        this.$document.on('checkout_error', $.proxy(this.onCheckoutError, this))
     };
     
     /**
@@ -77,12 +78,26 @@
         event.preventDefault();        
         this._showFields(type);
     };
+
+    /**
+     * Checkout event handler.
+     * 
+     * @since 1.2.3
+     * @param {Event} event 
+     */
+    SelectAddress.prototype.onCheckoutError = function(event) {
+        ['billing', 'shipping'].forEach(function(type) {
+            var $fieldsWrapper  = $('.woocommerce-' + type + '-fields__field-wrapper');
+            
+            // Show fields if has an error.
+            if ($fieldsWrapper.find('.woocommerce-invalid').length) {
+                $fieldsWrapper.removeClass('hidden');
+            }
+        })
+    }
     
     /**
      * Initialize address field values on load.
-     * 
-     * @since 1.0.0
-     * @returns {undefined}
      */
     SelectAddress.prototype._initFieldValues = function() {        
         var $selectedBillingField   = $('[name="fabfw_address_billing_id"]:checked');
@@ -98,10 +113,8 @@
      * Show the address fields if the customer wants to add a new address, otherwise
      * hide it.
      * 
-     * @since 1.0.0
      * @param {string} type Address type (billing|shipping).
      * @param {jQuery} $selectedField
-     * @returns {undefined}
      */
     SelectAddress.prototype._toggleFields = function(type, $selectedField) {
         // No saved address yet. The field is a input[type=hidden], so $selectedField 
@@ -120,9 +133,7 @@
     /**
      * Show the address fields and focus to the first visible field.
      * 
-     * @since 1.0.0
      * @param {string} type Address type (billing|shipping).
-     * @returns {undefined}
      */
     SelectAddress.prototype._showFields = function(type) {
         var $fieldsWrapper  = $('.woocommerce-' + type + '-fields__field-wrapper');
@@ -134,10 +145,8 @@
     /**
      * Update address field values.
      * 
-     * @since 1.0.0
      * @param {string} type Address type (billing|shipping).
      * @param {jQuery} $selectedField
-     * @returns {undefined}
      */
     SelectAddress.prototype._updateFieldValues = function(type, $selectedField) {
         var $form           = $selectedField.closest('form');
