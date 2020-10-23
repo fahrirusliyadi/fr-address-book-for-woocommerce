@@ -41,6 +41,7 @@ No.
 
 = 1.2.3 =
 * Fix order total not recalculated when post code changed.
+* Use WooCommerce address if no addresses have been created yet.
 
 = 1.2.2 =
 * Fix the select address field is not displayed on Elementor editor.
