@@ -47,7 +47,7 @@
     SelectAddress.prototype.onChangeBillingSelect = function(event) {
         var $selectedField = $(event.target);
         
-        this._toggleFields('billing', $selectedField);
+        this._initFieldsVisibility('billing', $selectedField);
         this._updateFieldValues('billing', $selectedField);
     };
     
@@ -61,7 +61,7 @@
     SelectAddress.prototype.onChangeShippingSelect = function(event) {
         var $selectedField = $(event.target);
         
-        this._toggleFields('shipping', $selectedField);
+        this._initFieldsVisibility('shipping', $selectedField);
         this._updateFieldValues('shipping', $selectedField);
     };
     
@@ -76,7 +76,7 @@
         var type = $(event.target).closest('#fabfw_address_billing_id_field').length ? 'billing' : 'shipping';
         
         event.preventDefault();        
-        this._showFields(type);
+        this._toggleFields(type);
     };
 
     /**
@@ -103,8 +103,8 @@
         var $selectedBillingField   = $('[name="fabfw_address_billing_id"]:checked');
         var $selectedShippingField  = $('[name="fabfw_address_shipping_id"]:checked');
         
-        this._toggleFields('billing', $selectedBillingField);
-        this._toggleFields('shipping', $selectedShippingField);
+        this._initFieldsVisibility('billing', $selectedBillingField);
+        this._initFieldsVisibility('shipping', $selectedShippingField);
         this._updateFieldValues('billing', $selectedBillingField);
         this._updateFieldValues('shipping', $selectedShippingField);
     };
@@ -116,7 +116,7 @@
      * @param {string} type Address type (billing|shipping).
      * @param {jQuery} $selectedField
      */
-    SelectAddress.prototype._toggleFields = function(type, $selectedField) {
+    SelectAddress.prototype._initFieldsVisibility = function(type, $selectedField) {
         // No saved address yet. The field is a input[type=hidden], so $selectedField 
         // will not contain any element.
         if (!$selectedField.length) {
@@ -131,15 +131,19 @@
     };
     
     /**
-     * Show the address fields and focus to the first visible field.
+     * Toggle the address fields.
      * 
      * @param {string} type Address type (billing|shipping).
      */
-    SelectAddress.prototype._showFields = function(type) {
+    SelectAddress.prototype._toggleFields = function(type) {
         var $fieldsWrapper  = $('.woocommerce-' + type + '-fields__field-wrapper');
         
-        $fieldsWrapper.removeClass('hidden');
-        $fieldsWrapper.find(':input:visible').first().focus();
+        if ($fieldsWrapper.hasClass('hidden')) {
+            $fieldsWrapper.removeClass('hidden');
+            $fieldsWrapper.find(':input:visible').first().focus();
+        } else {
+            $fieldsWrapper.addClass('hidden')
+        }
     };
     
     /**
