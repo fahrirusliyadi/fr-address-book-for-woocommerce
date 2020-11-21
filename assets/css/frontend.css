@@ -22,6 +22,10 @@
   border: 0;
 }
 
+.fabfw-select-address-container .form-row .radio span {
+  opacity: 0.5;
+}
+
 .fabfw-select-address-container .form-row .fabfw-edit {
   margin-top: 1em;
   display: none;
@@ -29,6 +33,10 @@
 
 .fabfw-select-address-container .form-row :checked + .radio {
   border-color: #a00;
+}
+
+.fabfw-select-address-container .form-row :checked + .radio span {
+  opacity: 1;
 }
 
 .fabfw-select-address-container .form-row :checked + .radio .fabfw-edit {

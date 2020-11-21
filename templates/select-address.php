@@ -48,7 +48,7 @@ if (count($addresses) < fr_address_book_for_woocommerce()->max_addresses) {
                         <?php checked($id, $saved_address_id) ?>
                     />
                     <label for="<?php echo "fabfw_address_{$type}_id_{$id}" ?>" class="radio">
-                        <?php echo $label ?>
+                        <span><?php echo $label ?></span>
                     </label>
                 <?php endforeach ?>
             </span>
