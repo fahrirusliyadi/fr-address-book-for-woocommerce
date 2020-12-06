@@ -1,2 +1,4 @@
 # Number of days of inactivity before an issue becomes stale
 daysUntilStale: 30
+# Label to use when marking an issue as stale
+staleLabel: stale
