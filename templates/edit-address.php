@@ -9,7 +9,7 @@
  * compatibility. 
  *
  * @since 1.0.0
- * @version 1.0.0 Markup based on woocommerce/myaccount/form-edit-address.php@3.3.0
+ * @version 1.0.1 Markup based on woocommerce/myaccount/form-edit-address.php@3.3.0
  * @author Fahri Rusliyadi <fahri.rusliyadi@gmail.com>
  */
 
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-?>
+do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 
 <div class="fabfw-edit-address-container">
     <form method="post">
@@ -42,3 +42,5 @@ if (!defined('ABSPATH')) {
         </div>
     </form>
 </div>
+
+<?php do_action( 'woocommerce_after_edit_account_address_form' ); ?>
