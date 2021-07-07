@@ -43,6 +43,8 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookEdit extends
             $field['value']         = isset($saved_addresses[$address_id][$saved_key]) ? $saved_addresses[$address_id][$saved_key] : '';
             $address_fields[$key]   = $field;
         }
+		
+		$address_fields = apply_filters('fr_address_book_for_woocommerce_address_fields', $address_fields, $address_id, $saved_addresses);
 
         fr_address_book_for_woocommerce()->Frontend_Template->load('edit-address.php', compact('address_id', 'address_fields', 'saved_address'));
     }
