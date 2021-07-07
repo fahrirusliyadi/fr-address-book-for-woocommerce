@@ -159,6 +159,11 @@
         var address         = fabfw_select_address.addresses[$selectedField.val()];
         
         if (!address) {
+            var $fieldsWrapper  = $('.woocommerce-' + type + '-fields__field-wrapper');
+
+            // Reset fields when adding a new address.
+            $fieldsWrapper.find(':input').val('')
+
             return;
         }
         

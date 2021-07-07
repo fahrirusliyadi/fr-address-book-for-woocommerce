@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fr Address Book for Woocommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-20 03:40+0000\n"
-"PO-Revision-Date: 2019-03-20 03:41+0000\n"
-"Last-Translator: fahri <dev.exalt.atelier@gmail.com>\n"
+"POT-Creation-Date: 2021-05-16 15:54+0000\n"
+"PO-Revision-Date: 2021-05-16 15:56+0000\n"
+"Last-Translator: Fahri Rusliyadi\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.2.1; wp-5.1.1"
+"X-Loco-Version: 2.4.3; wp-5.6.4"
 
 #: src/Fr_Address_Book_for_WooCommerce_Admin_Account.php:31
 #: src/Fr_Address_Book_for_WooCommerce_Admin_Account.php:54
@@ -20,7 +20,7 @@ msgid "General"
 msgstr "Umum"
 
 #: src/Fr_Address_Book_for_WooCommerce_Admin_Account.php:34
-#: templates/select-address.php:35
+#: templates/select-address.php:38
 msgid "Address book"
 msgstr "Buku alamat"
 
@@ -35,6 +35,10 @@ msgstr "Jumlah alamat maksimum yang diizinkan disimpan oleh pelanggan."
 #: src/Fr_Address_Book_for_WooCommerce_Admin_Plugins.php:28
 msgid "Settings"
 msgstr "Pengaturan"
+
+#: src/Fr_Address_Book_for_WooCommerce_Countries.php:32
+msgid "Address name"
+msgstr "Nama alamat"
 
 #: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookAdd.php:51
 msgid "Add Address"
@@ -60,21 +64,21 @@ msgstr "Ubah Alamat"
 msgid "Address changed successfully."
 msgstr "Alamat berhasil diubah."
 
-#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:130
+#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:126
 #, php-format
 msgid "%s is a required field."
 msgstr "%s harus diisi."
 
-#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:141
+#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:137
 msgid "Please enter a valid postcode/ZIP."
 msgstr "Silakan masukkan kode pos yang benar. "
 
-#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:151
+#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:147
 #, php-format
 msgid "%s is not a valid phone number."
 msgstr "%s bukan nomor telepon yang valid. "
 
-#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:159
+#: src/Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_BaseAction.php:155
 #, php-format
 msgid "%s is not a valid email address."
 msgstr "%s bukan alamat email yang valid. "
@@ -91,23 +95,23 @@ msgstr "Simpan alamat"
 msgid "The following addresses will be used on the checkout page."
 msgstr "Alamat ini akan digunakan di halaman pembayaran. "
 
-#: templates/my-address.php:46
+#: templates/my-address.php:50
 msgid "Are you sure you want to delete this address?"
 msgstr "Anda yakin ingin menghapus alamat ini?"
 
-#: templates/my-address.php:46
+#: templates/my-address.php:50
 msgid "Delete"
 msgstr "Hapus"
 
-#: templates/my-address.php:47 templates/select-address.php:24
+#: templates/my-address.php:51 templates/select-address.php:27
 msgid "Edit"
 msgstr "Ubah"
 
-#: templates/my-address.php:63
+#: templates/my-address.php:62
 msgid "You do not have any saved addresses yet."
 msgstr "Anda belum memiliki alamat yang tersimpan."
 
-#: templates/my-address.php:68 templates/select-address.php:28
+#: templates/my-address.php:67 templates/select-address.php:31
 msgid "Add new address"
 msgstr "Tambah alamat baru"
 
