@@ -159,6 +159,15 @@ abstract class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBook_Ba
                 }
             }
         }
+
+        /**
+         * Filter the validated post data.
+         * 
+         * @since 1.2.4
+         * @param array $post_data Posted data.
+         * @param array $address_fields Validated address fields.
+         */
+        $post_data = apply_filters('fabfw_frontend_myaccount_validate_post_data', $post_data, $address_fields);
         
         return $post_data;
     }

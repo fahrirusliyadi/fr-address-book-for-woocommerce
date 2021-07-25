@@ -39,6 +39,10 @@ No.
 
 == Changelog ==
 
+= 1.2.4 =
+* Update translation template.
+* Fix compatibility issue with `woocommerce-extra-checkout-fields-for-brazil` plugin.
+
 = 1.2.3 =
 * Fix order total not recalculated when post code changed.
 * Use WooCommerce address if no addresses have been created yet.
