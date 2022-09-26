@@ -47,6 +47,13 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout_Action {
         }
         
         $address_data = $customer->{"get_$type"}();
+        // Ignore data that doesn't exist in the input fields to prevent unwanted removal data. For example, phone data
+        // only exists in the billing fields.
+        foreach (array_keys($address_data) as $key) {
+            if (!isset($data["{$type}_${key}"])) {
+                unset($address_data[$key]);
+            }
+        }
         
         // Save custom address fields that may be provided by other plugins.
         foreach ($data as $key => $value) {            

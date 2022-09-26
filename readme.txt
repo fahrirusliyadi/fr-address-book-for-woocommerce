@@ -39,6 +39,9 @@ No.
 
 == Changelog ==
 
+= 1.2.5 =
+* Fix phone data get removed when used as the shipping address.
+
 = 1.2.4 =
 * Update translation template.
 * Fix compatibility issue with `woocommerce-extra-checkout-fields-for-brazil` plugin.
