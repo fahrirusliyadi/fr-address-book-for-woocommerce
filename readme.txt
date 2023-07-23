@@ -39,6 +39,9 @@ No.
 
 == Changelog ==
 
+= 1.2.6 =
+* Add hooks to the add-address.php template.
+
 = 1.2.5 =
 * Fix phone data get removed when used as the shipping address.
 
