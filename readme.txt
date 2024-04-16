@@ -3,8 +3,8 @@ Contributors: fahrirusliyadi
 Donate link: https://paypal.me/FahriRusliyadi
 Tags: multi, multiple, woocommerce, address, addresses, address-book
 Requires at least: 4.9
-Tested up to: 6.2.2
-Stable tag: 1.2.6
+Tested up to: 6.5.2
+Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,9 @@ No.
 3. Checkout page
 
 == Changelog ==
+
+= 1.2.7 =
+* Declare HPOS compatibility.
 
 = 1.2.6 =
 * Add hooks to the add-address.php template.

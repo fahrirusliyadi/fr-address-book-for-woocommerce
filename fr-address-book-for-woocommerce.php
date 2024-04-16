@@ -7,8 +7,8 @@
  * Author URI:      https://profiles.wordpress.org/fahrirusliyadi
  * Text Domain:     fr-address-book-for-woocommerce
  * Domain Path:     /languages
- * Version:         1.2.6
- * WC tested up to: 7.9.0
+ * Version:         1.2.7
+ * WC tested up to: 8.7.0
  *
  * @package         Fr_Address_Book_For_Woocommerce
  */
