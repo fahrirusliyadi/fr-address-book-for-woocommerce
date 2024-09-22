@@ -31,7 +31,6 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
         }
         
         $this->enqueue_scripts();
-        $this->maybe_preset_address();
         $this->display_select_address_field('billing');
     }
     
@@ -55,23 +54,6 @@ class Fr_Address_Book_for_WooCommerce_Frontend_Checkout {
     private function enqueue_scripts() {
         fr_address_book_for_woocommerce()->Asset->enqueue_style('fabfw_front_end');
         fr_address_book_for_woocommerce()->Asset->enqueue_script('fabfw_select_address');
-    }
-
-    /**
-     * Set initial address for customer using WooCommerce billing address.
-     */
-    private function maybe_preset_address() {
-        if (!wc()->customer->get_id() || fr_address_book_for_woocommerce()->Customer->get_addresses()) {
-            return;
-        }
-
-        $address = wc()->customer->get_billing();
-
-        // Assumes the user has a billing address.
-        if (isset($address['postcode'])) {
-            wc()->customer->add_meta_data("fabfw_address", $address);
-            wc()->customer->save_meta_data();
-        }
     }
 
     /**
