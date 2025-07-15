@@ -42,7 +42,7 @@ class Fr_Address_Book_for_WooCommerce_Customer {
             $address = $this->customer->get_billing();
 
             // Assumes the user has a billing address.
-            if (isset($address['postcode'])) {
+            if (!empty($address['postcode'])) {
                 $this->customer->add_meta_data("fabfw_address", $address);
                 $this->customer->save_meta_data();
 

@@ -61,7 +61,37 @@ class Fr_Address_Book_for_WooCommerce_Frontend_MyAccount_AddressBookAdd_Action e
         
         $customer->delete_meta_data_by_mid($address_id);
         $customer->save_meta_data();
-        
+
+        // Also clear the WooCommerce customer address data if no addresses left
+        if (empty($customer->get_meta("fabfw_address", false))) {
+            // Clear billing address
+            $customer->set_billing_first_name('');
+            $customer->set_billing_last_name('');
+            $customer->set_billing_company('');
+            $customer->set_billing_address_1('');
+            $customer->set_billing_address_2('');
+            $customer->set_billing_city('');
+            $customer->set_billing_postcode('');
+            $customer->set_billing_country('');
+            $customer->set_billing_state('');
+            $customer->set_billing_email('');
+            $customer->set_billing_phone('');
+
+            // Clear shipping address
+            $customer->set_shipping_first_name('');
+            $customer->set_shipping_last_name('');
+            $customer->set_shipping_company('');
+            $customer->set_shipping_address_1('');
+            $customer->set_shipping_address_2('');
+            $customer->set_shipping_city('');
+            $customer->set_shipping_postcode('');
+            $customer->set_shipping_country('');
+            $customer->set_shipping_state('');
+            $customer->set_shipping_phone('');
+
+            $customer->save();
+        }
+
         wc_add_notice(__('Address deleted successfully.', 'fr-address-book-for-woocommerce'));
         wp_safe_redirect(wc_get_endpoint_url('edit-address', null, wc_get_page_permalink('myaccount')));
         exit;
